@@ -10,6 +10,7 @@
 		325A4B402A4DB2A80047C1DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325A4B3F2A4DB2A80047C1DA /* AppDelegate.swift */; };
 		325A4B422A4DB2A80047C1DA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325A4B412A4DB2A80047C1DA /* SceneDelegate.swift */; };
 		325A4B492A4DB2A90047C1DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 325A4B482A4DB2A90047C1DA /* Assets.xcassets */; };
+		328A9E372A4DB6ED007AE4DE /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328A9E362A4DB6ED007AE4DE /* MainTabBarController.swift */; };
 		54CD706BF877B1F27A2B4C1F /* Pods_CargoApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C34CBB8F8F2A6B3A52BB48EE /* Pods_CargoApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -20,6 +21,7 @@
 		325A4B412A4DB2A80047C1DA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		325A4B482A4DB2A90047C1DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		325A4B4D2A4DB2A90047C1DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		328A9E362A4DB6ED007AE4DE /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		B1B3E370A64E98E02C473D3C /* Pods-CargoApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CargoApp.debug.xcconfig"; path = "Target Support Files/Pods-CargoApp/Pods-CargoApp.debug.xcconfig"; sourceTree = "<group>"; };
 		C34CBB8F8F2A6B3A52BB48EE /* Pods_CargoApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CargoApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -65,12 +67,45 @@
 		325A4B3E2A4DB2A80047C1DA /* CargoApp */ = {
 			isa = PBXGroup;
 			children = (
-				325A4B3F2A4DB2A80047C1DA /* AppDelegate.swift */,
-				325A4B412A4DB2A80047C1DA /* SceneDelegate.swift */,
-				325A4B482A4DB2A90047C1DA /* Assets.xcassets */,
-				325A4B4D2A4DB2A90047C1DA /* Info.plist */,
+				328A9E342A4DB698007AE4DE /* Application */,
+				328A9E332A4DB682007AE4DE /* Resources */,
+				328A9E322A4DB678007AE4DE /* Modules */,
 			);
 			path = CargoApp;
+			sourceTree = "<group>";
+		};
+		328A9E322A4DB678007AE4DE /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				328A9E352A4DB6D6007AE4DE /* Tab Bar */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		328A9E332A4DB682007AE4DE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				325A4B482A4DB2A90047C1DA /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		328A9E342A4DB698007AE4DE /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				325A4B3F2A4DB2A80047C1DA /* AppDelegate.swift */,
+				325A4B412A4DB2A80047C1DA /* SceneDelegate.swift */,
+				325A4B4D2A4DB2A90047C1DA /* Info.plist */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		328A9E352A4DB6D6007AE4DE /* Tab Bar */ = {
+			isa = PBXGroup;
+			children = (
+				328A9E362A4DB6ED007AE4DE /* MainTabBarController.swift */,
+			);
+			path = "Tab Bar";
 			sourceTree = "<group>";
 		};
 		943262ACBDA2081021A5567D /* Pods */ = {
@@ -195,6 +230,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				328A9E372A4DB6ED007AE4DE /* MainTabBarController.swift in Sources */,
 				325A4B402A4DB2A80047C1DA /* AppDelegate.swift in Sources */,
 				325A4B422A4DB2A80047C1DA /* SceneDelegate.swift in Sources */,
 			);
@@ -327,7 +363,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 962338348U;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = CargoApp/Info.plist;
+				INFOPLIST_FILE = CargoApp/Application/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -355,7 +391,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 962338348U;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = CargoApp/Info.plist;
+				INFOPLIST_FILE = CargoApp/Application/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
