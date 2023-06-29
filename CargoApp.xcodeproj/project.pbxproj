@@ -11,6 +11,12 @@
 		325A4B422A4DB2A80047C1DA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325A4B412A4DB2A80047C1DA /* SceneDelegate.swift */; };
 		325A4B492A4DB2A90047C1DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 325A4B482A4DB2A90047C1DA /* Assets.xcassets */; };
 		328A9E372A4DB6ED007AE4DE /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328A9E362A4DB6ED007AE4DE /* MainTabBarController.swift */; };
+		328A9E3A2A4DB8CC007AE4DE /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328A9E392A4DB8CC007AE4DE /* RegistrationViewController.swift */; };
+		328A9E3C2A4DB8D6007AE4DE /* RegistrationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328A9E3B2A4DB8D6007AE4DE /* RegistrationPresenter.swift */; };
+		328A9E3E2A4DB8DE007AE4DE /* RegistrationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328A9E3D2A4DB8DE007AE4DE /* RegistrationInteractor.swift */; };
+		328A9E402A4DB8E4007AE4DE /* RegistrationModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328A9E3F2A4DB8E4007AE4DE /* RegistrationModuleBuilder.swift */; };
+		328A9E422A4DB8E9007AE4DE /* RegistrationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328A9E412A4DB8E9007AE4DE /* RegistrationRouter.swift */; };
+		328A9E442A4DB8EE007AE4DE /* RegistrationProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328A9E432A4DB8EE007AE4DE /* RegistrationProtocols.swift */; };
 		54CD706BF877B1F27A2B4C1F /* Pods_CargoApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C34CBB8F8F2A6B3A52BB48EE /* Pods_CargoApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -22,6 +28,12 @@
 		325A4B482A4DB2A90047C1DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		325A4B4D2A4DB2A90047C1DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		328A9E362A4DB6ED007AE4DE /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		328A9E392A4DB8CC007AE4DE /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		328A9E3B2A4DB8D6007AE4DE /* RegistrationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPresenter.swift; sourceTree = "<group>"; };
+		328A9E3D2A4DB8DE007AE4DE /* RegistrationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationInteractor.swift; sourceTree = "<group>"; };
+		328A9E3F2A4DB8E4007AE4DE /* RegistrationModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationModuleBuilder.swift; sourceTree = "<group>"; };
+		328A9E412A4DB8E9007AE4DE /* RegistrationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationRouter.swift; sourceTree = "<group>"; };
+		328A9E432A4DB8EE007AE4DE /* RegistrationProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationProtocols.swift; sourceTree = "<group>"; };
 		B1B3E370A64E98E02C473D3C /* Pods-CargoApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CargoApp.debug.xcconfig"; path = "Target Support Files/Pods-CargoApp/Pods-CargoApp.debug.xcconfig"; sourceTree = "<group>"; };
 		C34CBB8F8F2A6B3A52BB48EE /* Pods_CargoApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CargoApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -77,6 +89,7 @@
 		328A9E322A4DB678007AE4DE /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				328A9E382A4DB8C2007AE4DE /* Registration */,
 				328A9E352A4DB6D6007AE4DE /* Tab Bar */,
 			);
 			path = Modules;
@@ -106,6 +119,19 @@
 				328A9E362A4DB6ED007AE4DE /* MainTabBarController.swift */,
 			);
 			path = "Tab Bar";
+			sourceTree = "<group>";
+		};
+		328A9E382A4DB8C2007AE4DE /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				328A9E392A4DB8CC007AE4DE /* RegistrationViewController.swift */,
+				328A9E3B2A4DB8D6007AE4DE /* RegistrationPresenter.swift */,
+				328A9E3D2A4DB8DE007AE4DE /* RegistrationInteractor.swift */,
+				328A9E3F2A4DB8E4007AE4DE /* RegistrationModuleBuilder.swift */,
+				328A9E412A4DB8E9007AE4DE /* RegistrationRouter.swift */,
+				328A9E432A4DB8EE007AE4DE /* RegistrationProtocols.swift */,
+			);
+			path = Registration;
 			sourceTree = "<group>";
 		};
 		943262ACBDA2081021A5567D /* Pods */ = {
@@ -230,9 +256,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				328A9E442A4DB8EE007AE4DE /* RegistrationProtocols.swift in Sources */,
 				328A9E372A4DB6ED007AE4DE /* MainTabBarController.swift in Sources */,
+				328A9E3C2A4DB8D6007AE4DE /* RegistrationPresenter.swift in Sources */,
 				325A4B402A4DB2A80047C1DA /* AppDelegate.swift in Sources */,
+				328A9E3E2A4DB8DE007AE4DE /* RegistrationInteractor.swift in Sources */,
+				328A9E3A2A4DB8CC007AE4DE /* RegistrationViewController.swift in Sources */,
+				328A9E402A4DB8E4007AE4DE /* RegistrationModuleBuilder.swift in Sources */,
 				325A4B422A4DB2A80047C1DA /* SceneDelegate.swift in Sources */,
+				328A9E422A4DB8E9007AE4DE /* RegistrationRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

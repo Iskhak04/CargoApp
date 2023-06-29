@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let mainTabBar = MainTabBarController()
         
         newWindow.makeKeyAndVisible()
-        newWindow.rootViewController = mainTabBar
+        newWindow.rootViewController = RegistrationModuleBuilder().build()
         window = newWindow
         
     }
