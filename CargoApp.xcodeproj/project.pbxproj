@@ -13,9 +13,11 @@
 		325A4B472A4DB2A80047C1DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 325A4B452A4DB2A80047C1DA /* Main.storyboard */; };
 		325A4B492A4DB2A90047C1DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 325A4B482A4DB2A90047C1DA /* Assets.xcassets */; };
 		325A4B4C2A4DB2A90047C1DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 325A4B4A2A4DB2A90047C1DA /* LaunchScreen.storyboard */; };
+		54CD706BF877B1F27A2B4C1F /* Pods_CargoApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C34CBB8F8F2A6B3A52BB48EE /* Pods_CargoApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1809D5ADCE95DDDFBF24475C /* Pods-CargoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CargoApp.release.xcconfig"; path = "Target Support Files/Pods-CargoApp/Pods-CargoApp.release.xcconfig"; sourceTree = "<group>"; };
 		325A4B3C2A4DB2A80047C1DA /* CargoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CargoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		325A4B3F2A4DB2A80047C1DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		325A4B412A4DB2A80047C1DA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +26,8 @@
 		325A4B482A4DB2A90047C1DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		325A4B4B2A4DB2A90047C1DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		325A4B4D2A4DB2A90047C1DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B1B3E370A64E98E02C473D3C /* Pods-CargoApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CargoApp.debug.xcconfig"; path = "Target Support Files/Pods-CargoApp/Pods-CargoApp.debug.xcconfig"; sourceTree = "<group>"; };
+		C34CBB8F8F2A6B3A52BB48EE /* Pods_CargoApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CargoApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +35,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54CD706BF877B1F27A2B4C1F /* Pods_CargoApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2520A8026624B226F34AE82B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C34CBB8F8F2A6B3A52BB48EE /* Pods_CargoApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		325A4B332A4DB2A80047C1DA = {
 			isa = PBXGroup;
 			children = (
 				325A4B3E2A4DB2A80047C1DA /* CargoApp */,
 				325A4B3D2A4DB2A80047C1DA /* Products */,
+				943262ACBDA2081021A5567D /* Pods */,
+				2520A8026624B226F34AE82B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +82,16 @@
 			path = CargoApp;
 			sourceTree = "<group>";
 		};
+		943262ACBDA2081021A5567D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B1B3E370A64E98E02C473D3C /* Pods-CargoApp.debug.xcconfig */,
+				1809D5ADCE95DDDFBF24475C /* Pods-CargoApp.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +99,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 325A4B502A4DB2A90047C1DA /* Build configuration list for PBXNativeTarget "CargoApp" */;
 			buildPhases = (
+				8AA1D4EFF53A9221241EAD4B /* [CP] Check Pods Manifest.lock */,
 				325A4B382A4DB2A80047C1DA /* Sources */,
 				325A4B392A4DB2A80047C1DA /* Frameworks */,
 				325A4B3A2A4DB2A80047C1DA /* Resources */,
+				C2AE40EA6F9C4E062DD94EA0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -132,6 +159,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8AA1D4EFF53A9221241EAD4B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CargoApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C2AE40EA6F9C4E062DD94EA0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CargoApp/Pods-CargoApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CargoApp/Pods-CargoApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CargoApp/Pods-CargoApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		325A4B382A4DB2A80047C1DA /* Sources */ = {
@@ -282,6 +351,7 @@
 		};
 		325A4B512A4DB2A90047C1DA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B1B3E370A64E98E02C473D3C /* Pods-CargoApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -310,6 +380,7 @@
 		};
 		325A4B522A4DB2A90047C1DA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1809D5ADCE95DDDFBF24475C /* Pods-CargoApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
