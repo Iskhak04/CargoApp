@@ -10,6 +10,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var coordinator: AppCoordinator?
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -20,8 +21,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //let mainTabBar = MainTabBarController()
         
         newWindow.makeKeyAndVisible()
-        newWindow.rootViewController = SignUpModuleBuilder().build()
-        window = newWindow
+        coordinator = AppCoordinator(window: newWindow)
+        coordinator?.start()
         
     }
 

@@ -1,19 +1,19 @@
 //
-//  SignUpModuleBuilder.swift
+//  SignInModuleBuilder.swift
 //  CargoApp
 //
-//  Created by Iskhak Zhutanov on 29.06.23.
+//  Created by Iskhak Zhutanov on 30.06.23.
 //
 
 import UIKit
 
-final class SignUpModuleBuilder {
+final class SignInModuleBuilder {
     
-    func build() -> UIViewController {
-        let view = SignUpViewController()
-        let presenter = SignUpPresenter()
-        let interactor = SignUpInteractor()
-        let router = SignUpRouter()
+    class func build() -> UIViewController {
+        let view = SignInViewController()
+        let presenter = SignInPresenter()
+        let interactor = SignInInteractor()
+        let router = SignInRouter()
         
         view.presenter = presenter
         

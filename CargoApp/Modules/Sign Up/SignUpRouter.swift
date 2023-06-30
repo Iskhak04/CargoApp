@@ -15,10 +15,16 @@ final class SignUpRouter {
 
 extension SignUpRouter: SignUpRouterProtocol {
     
+    func goToSignIn() {
+        //go to sign in page
+        viewController?.navigationController?.dismiss(animated: true)
+        viewController?.navigationController?.pushViewController(SignInModuleBuilder.build(), animated: true)
+    }
+    
     func sendSuccessStatus() {
         //new user is registered, push to tab bar
         let mainTabBar = MainTabBarController()
-        print("hello")
+        
         viewController?.navigationController?.dismiss(animated: true)
         viewController?.navigationController?.pushViewController(mainTabBar, animated: true)
     }

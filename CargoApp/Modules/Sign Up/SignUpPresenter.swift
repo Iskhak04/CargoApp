@@ -15,6 +15,10 @@ final class SignUpPresenter {
 
 extension SignUpPresenter: SignUpPresenterProtocol {
     
+    func goToSignIn() {
+        router?.goToSignIn()
+    }
+    
     func sendErrorMessages(errors: [ErrorModel]) {
         view?.sendErrorMessages(errors: errors)
     }

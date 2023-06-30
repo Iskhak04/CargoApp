@@ -12,7 +12,7 @@ final class SignUpViewController: UIViewController {
     
     var presenter: SignUpPresenterProtocol?
     
-    private lazy var registrationTitleLabel: UILabel = {
+    private lazy var signUpTitleLabel: UILabel = {
         let view = UILabel()
         view.text = "Sign Up"
         view.font = UIFont(name: Fonts.RobotoBold.rawValue, size: 35)
@@ -212,12 +212,13 @@ final class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.hidesBackButton = true
         view.backgroundColor = .systemBackground
         layout()
     }
                             
     @objc private func signInButtonClicked() {
-            
+        presenter?.goToSignIn()
     }
     
     @objc private func signUpButtonClicked() {
@@ -246,15 +247,15 @@ final class SignUpViewController: UIViewController {
     }
     
     private func layout() {
-        view.addSubview(registrationTitleLabel)
-        registrationTitleLabel.snp.makeConstraints { make in
+        view.addSubview(signUpTitleLabel)
+        signUpTitleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(120)
             make.centerX.equalToSuperview()
         }
         
         view.addSubview(userTypeSegmentedControl)
         userTypeSegmentedControl.snp.makeConstraints { make in
-            make.top.equalTo(registrationTitleLabel.snp.bottom).offset(50)
+            make.top.equalTo(signUpTitleLabel.snp.bottom).offset(50)
             make.centerX.equalToSuperview()
             make.height.equalTo(50)
         }
