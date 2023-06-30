@@ -20,7 +20,7 @@ final class AppCoordinator {
     }
     
     fileprivate func openRootViewController() {
-        window?.rootViewController = UINavigationController(rootViewController: SignUpModuleBuilder.build())
+        window?.rootViewController = UINavigationController(rootViewController: MainTabBarController())
     }
 }
 

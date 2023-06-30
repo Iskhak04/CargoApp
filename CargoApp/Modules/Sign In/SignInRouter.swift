@@ -21,6 +21,10 @@ extension SignInRouter: SignInRouterProtocol {
     
     func signInWasSuccessful() {
         //user successfully signed in, go to tab bar
+        let mainTabBar = MainTabBarController()
+        
+        viewController?.navigationController?.dismiss(animated: true)
+        viewController?.navigationController?.pushViewController(mainTabBar, animated: true)
     }
     
     func goToSignUp() {

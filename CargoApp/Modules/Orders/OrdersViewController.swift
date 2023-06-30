@@ -16,7 +16,7 @@ final class OrdersViewController: UIViewController {
         view.register(OrderCell.self, forCellReuseIdentifier: "OrderCell")
         view.dataSource = self
         view.delegate = self
-        view.backgroundColor = .cyan
+        view.showsVerticalScrollIndicator = false
         return view
     }()
     
@@ -39,20 +39,37 @@ final class OrdersViewController: UIViewController {
 
 extension OrdersViewController: UITableViewDataSource, UITableViewDelegate {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 20
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
+    // Set the spacing between sections
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 2
+    }
+    
+    // Make the background color show through
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = .systemBackground
+        return headerView
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = ordersTableView.dequeueReusableCell(withIdentifier: "OrderCell", for: indexPath) as! OrderCell
-        cell.backgroundColor = .green
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 220
     }
+    
+    
     
 }
 

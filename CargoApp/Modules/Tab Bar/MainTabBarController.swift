@@ -12,11 +12,12 @@ final class MainTabBarController: UITabBarController {
         super.viewDidLoad()
         tabBar.tintColor = .label
         tabBar.backgroundColor = .systemBackground
+        navigationItem.hidesBackButton = true
         addVCs()
     }
     
     func addVCs() {
-        viewControllers = []
+        viewControllers = [setupVCs(viewController: OrdersViewController(), image: UIImage(systemName: "list.clipboard")!, title: "Orders")]
     }
     
     func setupVCs(viewController: UIViewController, image: UIImage, title: String) -> UIViewController {
