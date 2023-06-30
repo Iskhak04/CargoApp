@@ -1,5 +1,5 @@
 //
-//  RegistrationModuleBuilder.swift
+//  SignUpModuleBuilder.swift
 //  CargoApp
 //
 //  Created by Iskhak Zhutanov on 29.06.23.
@@ -7,13 +7,13 @@
 
 import UIKit
 
-final class RegistrationModuleBuilder {
+final class SignUpModuleBuilder {
     
     func build() -> UIViewController {
-        let view = RegistrationViewController()
-        let presenter = RegistrationPresenter()
-        let interactor = RegistrationInteractor()
-        let router = RegistrationRouter()
+        let view = SignUpViewController()
+        let presenter = SignUpPresenter()
+        let interactor = SignUpInteractor()
+        let router = SignUpRouter()
         
         view.presenter = presenter
         

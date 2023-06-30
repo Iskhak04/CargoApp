@@ -17,10 +17,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let newWindow = UIWindow(windowScene: windowScene)
-        let mainTabBar = MainTabBarController()
+        //let mainTabBar = MainTabBarController()
         
         newWindow.makeKeyAndVisible()
-        newWindow.rootViewController = RegistrationModuleBuilder().build()
+        newWindow.rootViewController = SignUpModuleBuilder().build()
         window = newWindow
         
     }
