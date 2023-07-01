@@ -15,4 +15,8 @@ final class OrdersPresenter {
 
 extension OrdersPresenter: OrdersPresenterProtocol {
     
+    func goToDetailedOrder() {
+        router?.goToDetailedOrder()
+    }
+    
 }

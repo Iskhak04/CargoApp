@@ -60,6 +60,7 @@ final class SignUpViewController: UIViewController {
         view.leftView = usernameTextFieldPaddingView
         view.leftViewMode = .always
         view.defaultTextAttributes = [NSAttributedString.Key.font : Constants.shared.textFieldTextFont!]
+        view.delegate = self
         return view
     }()
     
@@ -92,6 +93,7 @@ final class SignUpViewController: UIViewController {
         view.leftView = emailTextFieldPaddingView
         view.leftViewMode = .always
         view.defaultTextAttributes = [NSAttributedString.Key.font : Constants.shared.textFieldTextFont!]
+        view.delegate = self
         return view
     }()
     
@@ -114,6 +116,7 @@ final class SignUpViewController: UIViewController {
         view.isSecureTextEntry = true
         view.rightView = revealPasswordButton
         view.rightViewMode = .always
+        view.delegate = self
         return view
     }()
     
@@ -147,6 +150,7 @@ final class SignUpViewController: UIViewController {
         view.leftViewMode = .always
         view.defaultTextAttributes = [NSAttributedString.Key.font : Constants.shared.textFieldTextFont!]
         view.isSecureTextEntry = true
+        view.delegate = self
         return view
     }()
     
@@ -377,6 +381,18 @@ final class SignUpViewController: UIViewController {
         
         
     }
+}
+
+extension SignUpViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func dismiss(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+
 }
 
 extension SignUpViewController: SignUpViewProtocol {

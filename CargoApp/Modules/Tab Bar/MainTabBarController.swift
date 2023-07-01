@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 final class MainTabBarController: UITabBarController {
     override func viewDidLoad() {
@@ -17,7 +18,7 @@ final class MainTabBarController: UITabBarController {
     }
     
     func addVCs() {
-        viewControllers = [setupVCs(viewController: OrdersViewController(), image: UIImage(systemName: "list.clipboard")!, title: "Orders")]
+        viewControllers = [setupVCs(viewController: OrdersModuleBuilder.build(), image: UIImage(systemName: "list.clipboard")!, title: "Orders")]
     }
     
     func setupVCs(viewController: UIViewController, image: UIImage, title: String) -> UIViewController {

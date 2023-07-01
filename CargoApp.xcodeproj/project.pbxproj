@@ -36,6 +36,12 @@
 		328CF89A2A4EDDF100129CE5 /* OrdersProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328CF8992A4EDDF100129CE5 /* OrdersProtocols.swift */; };
 		328CF89C2A4EDDF600129CE5 /* OrdersRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328CF89B2A4EDDF600129CE5 /* OrdersRouter.swift */; };
 		328CF89F2A4EDF2200129CE5 /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328CF89E2A4EDF2200129CE5 /* OrderCell.swift */; };
+		32C161222A4FEC0B00034807 /* DetailedOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C161212A4FEC0B00034807 /* DetailedOrderViewController.swift */; };
+		32C161242A4FEC1100034807 /* DetailedOrderPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C161232A4FEC1100034807 /* DetailedOrderPresenter.swift */; };
+		32C161262A4FEC1600034807 /* DetailedOrderInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C161252A4FEC1600034807 /* DetailedOrderInteractor.swift */; };
+		32C161282A4FEC1B00034807 /* DetailedOrderRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C161272A4FEC1B00034807 /* DetailedOrderRouter.swift */; };
+		32C1612A2A4FEC2100034807 /* DetailedOrderModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C161292A4FEC2100034807 /* DetailedOrderModuleBuilder.swift */; };
+		32C1612C2A4FEC2500034807 /* DetailedOrderProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C1612B2A4FEC2500034807 /* DetailedOrderProtocols.swift */; };
 		32EBEB8C2A4E8BB20051E966 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 32EBEB802A4E8BB20051E966 /* Roboto-Medium.ttf */; };
 		32EBEB8D2A4E8BB20051E966 /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 32EBEB812A4E8BB20051E966 /* Roboto-BoldItalic.ttf */; };
 		32EBEB8E2A4E8BB20051E966 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 32EBEB822A4E8BB20051E966 /* Roboto-Bold.ttf */; };
@@ -86,6 +92,12 @@
 		328CF8992A4EDDF100129CE5 /* OrdersProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersProtocols.swift; sourceTree = "<group>"; };
 		328CF89B2A4EDDF600129CE5 /* OrdersRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersRouter.swift; sourceTree = "<group>"; };
 		328CF89E2A4EDF2200129CE5 /* OrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
+		32C161212A4FEC0B00034807 /* DetailedOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedOrderViewController.swift; sourceTree = "<group>"; };
+		32C161232A4FEC1100034807 /* DetailedOrderPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedOrderPresenter.swift; sourceTree = "<group>"; };
+		32C161252A4FEC1600034807 /* DetailedOrderInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedOrderInteractor.swift; sourceTree = "<group>"; };
+		32C161272A4FEC1B00034807 /* DetailedOrderRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedOrderRouter.swift; sourceTree = "<group>"; };
+		32C161292A4FEC2100034807 /* DetailedOrderModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedOrderModuleBuilder.swift; sourceTree = "<group>"; };
+		32C1612B2A4FEC2500034807 /* DetailedOrderProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedOrderProtocols.swift; sourceTree = "<group>"; };
 		32EBEB802A4E8BB20051E966 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		32EBEB812A4E8BB20051E966 /* Roboto-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BoldItalic.ttf"; sourceTree = "<group>"; };
 		32EBEB822A4E8BB20051E966 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
@@ -157,6 +169,7 @@
 		328A9E322A4DB678007AE4DE /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				32C161202A4FEBEC00034807 /* Detailed Order */,
 				328CF8902A4EDDB400129CE5 /* Orders */,
 				328CF8812A4ECD1E00129CE5 /* Sign In */,
 				328A9E382A4DB8C2007AE4DE /* Sign Up */,
@@ -239,6 +252,19 @@
 				328CF89E2A4EDF2200129CE5 /* OrderCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		32C161202A4FEBEC00034807 /* Detailed Order */ = {
+			isa = PBXGroup;
+			children = (
+				32C161212A4FEC0B00034807 /* DetailedOrderViewController.swift */,
+				32C161232A4FEC1100034807 /* DetailedOrderPresenter.swift */,
+				32C161252A4FEC1600034807 /* DetailedOrderInteractor.swift */,
+				32C161272A4FEC1B00034807 /* DetailedOrderRouter.swift */,
+				32C161292A4FEC2100034807 /* DetailedOrderModuleBuilder.swift */,
+				32C1612B2A4FEC2500034807 /* DetailedOrderProtocols.swift */,
+			);
+			path = "Detailed Order";
 			sourceTree = "<group>";
 		};
 		32EBEB7F2A4E8B9B0051E966 /* Fonts */ = {
@@ -422,6 +448,8 @@
 				328A9E372A4DB6ED007AE4DE /* MainTabBarController.swift in Sources */,
 				328A9E3C2A4DB8D6007AE4DE /* SignUpPresenter.swift in Sources */,
 				325A4B402A4DB2A80047C1DA /* AppDelegate.swift in Sources */,
+				32C161282A4FEC1B00034807 /* DetailedOrderRouter.swift in Sources */,
+				32C161242A4FEC1100034807 /* DetailedOrderPresenter.swift in Sources */,
 				328CF88F2A4ECFA400129CE5 /* AppCoordinator.swift in Sources */,
 				328CF8892A4ECD3C00129CE5 /* SignInRouter.swift in Sources */,
 				328CF8802A4EC7C600129CE5 /* ErrorModel.swift in Sources */,
@@ -429,11 +457,13 @@
 				328CF87C2A4EC72500129CE5 /* Errors.swift in Sources */,
 				328A9E3E2A4DB8DE007AE4DE /* SignUpInteractor.swift in Sources */,
 				328CF88D2A4ECD4700129CE5 /* SignInProtocols.swift in Sources */,
+				32C1612C2A4FEC2500034807 /* DetailedOrderProtocols.swift in Sources */,
 				328CF87E2A4EC74300129CE5 /* ErrorMessages.swift in Sources */,
 				328A9E3A2A4DB8CC007AE4DE /* SignUpViewController.swift in Sources */,
 				328CF8852A4ECD3100129CE5 /* SignInPresenter.swift in Sources */,
 				32EBEB9B2A4E8C6F0051E966 /* Fonts.swift in Sources */,
 				328A9E402A4DB8E4007AE4DE /* SignUpModuleBuilder.swift in Sources */,
+				32C161222A4FEC0B00034807 /* DetailedOrderViewController.swift in Sources */,
 				325A4B422A4DB2A80047C1DA /* SceneDelegate.swift in Sources */,
 				328CF89A2A4EDDF100129CE5 /* OrdersProtocols.swift in Sources */,
 				328CF8922A4EDDD800129CE5 /* OrdersViewController.swift in Sources */,
@@ -441,9 +471,11 @@
 				328CF8982A4EDDE900129CE5 /* OrdersModuleBuilder.swift in Sources */,
 				328CF8782A4EC42800129CE5 /* User.swift in Sources */,
 				328CF8872A4ECD3700129CE5 /* SignInInteractor.swift in Sources */,
+				32C1612A2A4FEC2100034807 /* DetailedOrderModuleBuilder.swift in Sources */,
 				328CF88B2A4ECD4100129CE5 /* SignInModuleBuilder.swift in Sources */,
 				328A9E422A4DB8E9007AE4DE /* SignUpRouter.swift in Sources */,
 				328CF8942A4EDDDE00129CE5 /* OrdersPresenter.swift in Sources */,
+				32C161262A4FEC1600034807 /* DetailedOrderInteractor.swift in Sources */,
 				328CF89C2A4EDDF600129CE5 /* OrdersRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

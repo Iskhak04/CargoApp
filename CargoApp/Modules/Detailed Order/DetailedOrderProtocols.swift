@@ -1,32 +1,31 @@
 //
-//  OrdersProtocols.swift
+//  DetailedOrderProtocols.swift
 //  CargoApp
 //
-//  Created by Iskhak Zhutanov on 30.06.23.
+//  Created by Iskhak Zhutanov on 01.07.23.
 //
 
 //Conforms View, Presenter -> View
-protocol OrdersViewProtocol {
+protocol DetailedOrderViewProtocol {
     
 }
 
 //Conforms Presenter, Interactor -> Presenter, View -> Presenter
-protocol OrdersPresenterProtocol {
+protocol DetailedOrderPresenterProtocol {
     
     //View -> Presenter
-    func goToDetailedOrder()
+    
     
     //Interactor -> Presenter
     
 }
 
 //Conforms Interactor, Presenter -> Interactor
-protocol OrdersInteractorProtocol {
+protocol DetailedOrderInteractorProtocol {
     
 }
 
 //Conforms Router, Presenter -> Router
-protocol OrdersRouterProtocol {
-    func goToDetailedOrder()
+protocol DetailedOrderRouterProtocol {
     
 }

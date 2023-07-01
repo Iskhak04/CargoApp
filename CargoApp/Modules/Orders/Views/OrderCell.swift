@@ -201,6 +201,8 @@ final class OrderCell: UITableViewCell {
     }()
     
     @objc func callShipperButtonClicked() {
+        guard let number = URL(string: "tel://996704728104") else { return }
+        UIApplication.shared.open(number)
         
     }
     

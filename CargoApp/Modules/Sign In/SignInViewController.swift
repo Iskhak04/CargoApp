@@ -42,6 +42,7 @@ final class SignInViewController: UIViewController {
         view.leftView = usernameTextFieldPaddingView
         view.leftViewMode = .always
         view.defaultTextAttributes = [NSAttributedString.Key.font : Constants.shared.textFieldTextFont!]
+        view.delegate = self
         return view
     }()
     
@@ -64,6 +65,7 @@ final class SignInViewController: UIViewController {
         view.isSecureTextEntry = true
         view.rightView = revealPasswordButton
         view.rightViewMode = .always
+        view.delegate = self
         return view
     }()
     
@@ -250,6 +252,18 @@ final class SignInViewController: UIViewController {
         }
     }
     
+}
+
+extension SignInViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func dismiss(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+
 }
 
 extension SignInViewController: SignInViewProtocol {
