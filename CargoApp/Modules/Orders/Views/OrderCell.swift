@@ -51,8 +51,8 @@ final class OrderCell: UITableViewCell {
     
     lazy var pickUpIconImageView: UIImageView = {
         let view = UIImageView()
-        view.image = UIImage(systemName: "arrow.up.square", withConfiguration: UIImage.SymbolConfiguration(pointSize: 20, weight: .medium, scale: .large))
-        view.tintColor = .gray
+        view.image = UIImage(systemName: "arrow.up.circle.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 20, weight: .medium, scale: .large))
+        view.tintColor = .systemGreen
         return view
     }()
     
@@ -84,8 +84,8 @@ final class OrderCell: UITableViewCell {
     
     lazy var dropOffIconImageView: UIImageView = {
         let view = UIImageView()
-        view.image = UIImage(systemName: "arrow.down.square", withConfiguration: UIImage.SymbolConfiguration(pointSize: 20, weight: .medium, scale: .large))
-        view.tintColor = .gray
+        view.image = UIImage(systemName: "arrow.down.circle.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 20, weight: .medium, scale: .large))
+        view.tintColor = .systemRed
         return view
     }()
     
