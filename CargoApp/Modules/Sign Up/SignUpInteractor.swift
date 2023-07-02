@@ -5,6 +5,8 @@
 //  Created by Iskhak Zhutanov on 29.06.23.
 //
 
+import FirebaseAuth
+
 final class SignUpInteractor {
     
     var presenter: SignUpPresenterProtocol?
@@ -19,6 +21,9 @@ extension SignUpInteractor: SignUpInteractorProtocol {
             if errors.count == 0 {
                 //send success status to presenter and register new user
                 presenter?.sendSuccessStatus()
+                Auth.auth().createUser(withEmail: user.email, password: user.password) { authResult, error in
+                    
+                }
             } else {
                 //send error message to presenter
                 presenter?.sendErrorMessages(errors: errors)

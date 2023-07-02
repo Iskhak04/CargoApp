@@ -9,5 +9,7 @@ target 'CargoApp' do
 	pod 'SnapKit'
 	pod 'Alamofire'
 	pod 'Hex'
+	pod 'MapboxCoreNavigation'
+	pod 'MapboxNavigation'
 
 end

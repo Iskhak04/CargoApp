@@ -8,6 +8,7 @@
 import UIKit
 import MapKit
 
+
 final class DetailedOrderViewController: UIViewController {
     
     var presenter: DetailedOrderPresenterProtocol?
@@ -17,6 +18,7 @@ final class DetailedOrderViewController: UIViewController {
     var dropOffLocation: CLLocation = CLLocation(latitude: 31.217031101244036, longitude: -98.39342797721083)
     
     var distanceInMiles: Double = 0
+    var isMapFullScreen: Bool = false
     
     //Birmingham, Al
     //33.515915842143556, -86.80900570276167
@@ -40,6 +42,14 @@ final class DetailedOrderViewController: UIViewController {
     private lazy var mapView: MKMapView = {
         let view = MKMapView()
         view.delegate = self
+        return view
+    }()
+    
+    private lazy var fullScreenButton: UIButton = {
+        let view = UIButton()
+        view.setImage(UIImage(systemName: "square.dashed", withConfiguration: UIImage.SymbolConfiguration(pointSize: 25, weight: .bold, scale: .large)), for: .normal)
+        view.tintColor = .black
+        view.addTarget(self, action: #selector(fullScreenButtonClicked), for: .touchUpInside)
         return view
     }()
     
@@ -368,6 +378,35 @@ final class DetailedOrderViewController: UIViewController {
         configureMap()
     }
     
+    @objc private func fullScreenButtonClicked() {
+        
+        if isMapFullScreen {
+            mapView.snp.updateConstraints { make in
+                make.height.equalTo(300)
+            }
+
+            fullScreenButton.snp.remakeConstraints { make in
+                make.bottom.equalToSuperview().offset(-25)
+                make.right.equalToSuperview().offset(-8)
+                make.height.equalTo(40)
+                make.width.equalTo(40)
+            }
+            isMapFullScreen = !isMapFullScreen
+        } else {
+            mapView.snp.updateConstraints { make in
+                make.height.equalTo(view.frame.height)
+            }
+            fullScreenButton.snp.remakeConstraints { make in
+                make.bottom.equalTo(view.snp.bottom).offset(-40)
+                make.right.equalTo(view.snp.right).offset(-15)
+                make.height.equalTo(40)
+                make.width.equalTo(40)
+            }
+            isMapFullScreen = !isMapFullScreen
+        }
+        
+    }
+    
     @objc private func callShipperButtonClicked() {
         guard let number = URL(string: "tel://996704728104") else { return }
         UIApplication.shared.open(number)
@@ -430,6 +469,14 @@ final class DetailedOrderViewController: UIViewController {
             make.centerX.equalToSuperview()
             make.height.equalTo(300)
             make.width.equalToSuperview()
+        }
+        
+        mapView.addSubview(fullScreenButton)
+        fullScreenButton.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().offset(-25)
+            make.right.equalToSuperview().offset(-8)
+            make.height.equalTo(40)
+            make.width.equalTo(40)
         }
         
         scrollView.addSubview(pickUpDateLabel)

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>420898591802-sl2n9lbijomn742ili2d4fhubomcfetm.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.420898591802-sl2n9lbijomn742ili2d4fhubomcfetm</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDqeVzjLqx08y2a1b0KBJ8ue7wD_ESmrME</string>
+	<key>GCM_SENDER_ID</key>
+	<string>420898591802</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.iskhak.CargoApp</string>
+	<key>PROJECT_ID</key>
+	<string>cargocode-d16e4</string>
+	<key>STORAGE_BUCKET</key>
+	<string>cargocode-d16e4.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:420898591802:ios:ef23b3c991d3a5ff399103</string>
+</dict>
+</plist>
