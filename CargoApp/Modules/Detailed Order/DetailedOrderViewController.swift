@@ -75,7 +75,7 @@ final class DetailedOrderViewController: UIViewController {
     
     private lazy var pickUpIconImageView: UIImageView = {
         let view = UIImageView()
-        view.image = UIImage(systemName: "arrow.up.circle.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 20, weight: .medium, scale: .large))
+        view.image = UIImage(systemName: "arrow.up.circle.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 25, weight: .medium, scale: .large))
         view.tintColor = .systemGreen
         return view
     }()
@@ -83,7 +83,7 @@ final class DetailedOrderViewController: UIViewController {
     private lazy var pickUpWordLabel: UILabel = {
         let view = UILabel()
         view.text = "Pick up"
-        view.font = UIFont(name: Fonts.RobotoRegular.rawValue, size: 15)
+        view.font = UIFont(name: Fonts.RobotoRegular.rawValue, size: 16)
         view.textColor = .gray
         return view
     }()
@@ -91,7 +91,7 @@ final class DetailedOrderViewController: UIViewController {
     private lazy var pickUpAddressLabel: UILabel = {
         let view = UILabel()
         view.text = "Birmingham, AL 35203"
-        view.font = UIFont(name: Fonts.RobotoRegular.rawValue, size: 17)
+        view.font = UIFont(name: Fonts.RobotoBold.rawValue, size: 19)
         return view
     }()
     
@@ -108,7 +108,7 @@ final class DetailedOrderViewController: UIViewController {
     
     private lazy var dropOffIconImageView: UIImageView = {
         let view = UIImageView()
-        view.image = UIImage(systemName: "arrow.down.circle.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 20, weight: .medium, scale: .large))
+        view.image = UIImage(systemName: "arrow.down.circle.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 25, weight: .medium, scale: .large))
         view.tintColor = .systemRed
         return view
     }()
@@ -116,7 +116,7 @@ final class DetailedOrderViewController: UIViewController {
     private lazy var dropOffWordLabel: UILabel = {
         let view = UILabel()
         view.text = "Drop off"
-        view.font = UIFont(name: Fonts.RobotoRegular.rawValue, size: 15)
+        view.font = UIFont(name: Fonts.RobotoRegular.rawValue, size: 16)
         view.textColor = .gray
         return view
     }()
@@ -124,7 +124,7 @@ final class DetailedOrderViewController: UIViewController {
     private lazy var dropOffAddressLabel: UILabel = {
         let view = UILabel()
         view.text = "Lometa, TX 76853"
-        view.font = UIFont(name: Fonts.RobotoRegular.rawValue, size: 17)
+        view.font = UIFont(name: Fonts.RobotoBold.rawValue, size: 19)
         return view
     }()
     
@@ -519,7 +519,7 @@ final class DetailedOrderViewController: UIViewController {
         
         scrollView.addSubview(dropOffView)
         dropOffView.snp.makeConstraints { make in
-            make.top.equalTo(pickUpView.snp.bottom).offset(15)
+            make.top.equalTo(pickUpView.snp.bottom).offset(25)
             make.left.equalToSuperview().offset(20)
             make.height.equalTo(40)
             make.width.equalTo(220)
@@ -548,7 +548,7 @@ final class DetailedOrderViewController: UIViewController {
             make.top.equalTo(pickUpView.snp.bottom).offset(0)
             make.bottom.equalTo(dropOffView.snp.top).offset(0)
             make.width.equalTo(2)
-            make.left.equalToSuperview().offset(39)
+            make.left.equalToSuperview().offset(43)
         }
         
         scrollView.addSubview(horizontalLine1View)

@@ -15,7 +15,7 @@ protocol SignInPresenterProtocol {
     
     //View -> Presenter
     func goToSignUp()
-    func userSignIn(username: String, password: String)
+    func userSignIn(email: String, password: String)
     func goToForgotPassword()
     
     //Interactor -> Presenter
@@ -25,7 +25,7 @@ protocol SignInPresenterProtocol {
 
 //Conforms Interactor, Presenter -> Interactor
 protocol SignInInteractorProtocol {
-    func userSignIn(username: String, password: String)
+    func userSignIn(email: String, password: String)
 }
 
 //Conforms Router, Presenter -> Router

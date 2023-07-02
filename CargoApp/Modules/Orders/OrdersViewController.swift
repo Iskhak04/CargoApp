@@ -22,6 +22,7 @@ final class OrdersViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter?.fetchOrders()
         view.backgroundColor = .systemBackground
         layout()
     }

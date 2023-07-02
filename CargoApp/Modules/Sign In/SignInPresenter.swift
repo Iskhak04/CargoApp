@@ -27,8 +27,8 @@ extension SignInPresenter: SignInPresenterProtocol {
         router?.signInWasSuccessful()
     }
     
-    func userSignIn(username: String, password: String) {
-        interactor?.userSignIn(username: username, password: password)
+    func userSignIn(email: String, password: String) {
+        interactor?.userSignIn(email: email, password: password)
     }
     
     func goToSignUp() {

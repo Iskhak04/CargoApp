@@ -5,6 +5,8 @@
 //  Created by Iskhak Zhutanov on 30.06.23.
 //
 
+import FirebaseAuth
+
 final class SignInInteractor {
     
     var presenter: SignInPresenterProtocol?
@@ -13,13 +15,20 @@ final class SignInInteractor {
 
 extension SignInInteractor: SignInInteractorProtocol {
     
-    func userSignIn(username: String, password: String) {
+    func userSignIn(email: String, password: String) {
         //here we check if the user exists, and if the username and password are correct
-        let errors = validateUserData(username: username, password: password)
+        let errors = validateUserData(username: email, password: password)
+        
         
         if errors.count == 0 {
-            //send success status to presenter
-            presenter?.signInWasSuccessful()
+            
+            Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+                if authResult?.user.email == email {
+                    //send success status to presenter
+                    self.presenter?.signInWasSuccessful()
+                }
+            }
+            
         } else {
             //send error message to presenter
             presenter?.sendErrorMessages(errors: errors)

@@ -15,6 +15,7 @@ protocol OrdersPresenterProtocol {
     
     //View -> Presenter
     func goToDetailedOrder()
+    func fetchOrders()
     
     //Interactor -> Presenter
     
@@ -22,7 +23,7 @@ protocol OrdersPresenterProtocol {
 
 //Conforms Interactor, Presenter -> Interactor
 protocol OrdersInteractorProtocol {
-    
+    func fetchOrders()
 }
 
 //Conforms Router, Presenter -> Router

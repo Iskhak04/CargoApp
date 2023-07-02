@@ -19,34 +19,34 @@ final class SignInViewController: UIViewController {
         return view
     }()
     
-    private lazy var usernameTitleLabel: UILabel = {
+    private lazy var emailTitleLabel: UILabel = {
         let view = UILabel()
-        view.text = "Username"
+        view.text = "Email"
         view.font = Constants.shared.labelAboveTextFieldFont
         return view
     }()
     
-    private lazy var usernameTextFieldPaddingView: UIView = {
+    private lazy var emailTextFieldPaddingView: UIView = {
         let view = UIView()
         view.frame = CGRect(x: 0, y: 0, width: 10, height: 20)
         return view
     }()
     
-    private lazy var usernameTextField: UITextField = {
+    private lazy var emailTextField: UITextField = {
         let view = UITextField()
         view.autocorrectionType = .no
         view.autocapitalizationType = .none
         view.layer.borderColor = Constants.shared.textFieldsBorderColor
         view.layer.borderWidth = 1
         view.layer.cornerRadius = 7
-        view.leftView = usernameTextFieldPaddingView
+        view.leftView = emailTextFieldPaddingView
         view.leftViewMode = .always
         view.defaultTextAttributes = [NSAttributedString.Key.font : Constants.shared.textFieldTextFont!]
         view.delegate = self
         return view
     }()
     
-    private lazy var usernameErrorLabel: UILabel = {
+    private lazy var emailErrorLabel: UILabel = {
         let view = UILabel()
         view.textColor = .systemRed
         return view
@@ -159,15 +159,15 @@ final class SignInViewController: UIViewController {
     
     @objc private func signInButtonClicked() {
         
-        usernameTextField.layer.borderColor = Constants.shared.textFieldsBorderColor
+        emailTextField.layer.borderColor = Constants.shared.textFieldsBorderColor
         passwordTextField.layer.borderColor = Constants.shared.textFieldsBorderColor
         
-        usernameErrorLabel.text = ""
+        emailErrorLabel.text = ""
         passwordErrorLabel.text = ""
 
-        guard let username = usernameTextField.text, let password = passwordTextField.text else { return }
+        guard let username = emailTextField.text, let password = passwordTextField.text else { return }
         
-        presenter?.userSignIn(username: username, password: password)
+        presenter?.userSignIn(email: username, password: password)
     }
     
     private func layout() {
@@ -177,29 +177,29 @@ final class SignInViewController: UIViewController {
             make.centerX.equalToSuperview()
         }
         
-        view.addSubview(usernameTitleLabel)
-        usernameTitleLabel.snp.makeConstraints { make in
+        view.addSubview(emailTitleLabel)
+        emailTitleLabel.snp.makeConstraints { make in
             make.top.equalTo(signInTitleLabel.snp.bottom).offset(50)
             make.left.equalToSuperview().offset(20)
         }
         
-        view.addSubview(usernameTextField)
-        usernameTextField.snp.makeConstraints { make in
-            make.top.equalTo(usernameTitleLabel.snp.bottom).offset(10)
+        view.addSubview(emailTextField)
+        emailTextField.snp.makeConstraints { make in
+            make.top.equalTo(emailTitleLabel.snp.bottom).offset(10)
             make.left.equalToSuperview().offset(20)
             make.right.equalToSuperview().offset(-20)
             make.height.equalTo(35)
         }
         
-        view.addSubview(usernameErrorLabel)
-        usernameErrorLabel.snp.makeConstraints { make in
-            make.top.equalTo(usernameTextField.snp.bottom).offset(5)
+        view.addSubview(emailErrorLabel)
+        emailErrorLabel.snp.makeConstraints { make in
+            make.top.equalTo(emailTextField.snp.bottom).offset(5)
             make.left.equalToSuperview().offset(20)
         }
         
         view.addSubview(passwordTitleLabel)
         passwordTitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(usernameTextField.snp.bottom).offset(35)
+            make.top.equalTo(emailTextField.snp.bottom).offset(35)
             make.left.equalToSuperview().offset(20)
         }
         
@@ -274,8 +274,8 @@ extension SignInViewController: SignInViewProtocol {
         for i in 0..<errors.count {
             switch errors[i].error {
             case .username:
-                usernameTextField.layer.borderColor = UIColor.systemRed.cgColor
-                usernameErrorLabel.text = errors[i].errorMessage.rawValue
+                emailTextField.layer.borderColor = UIColor.systemRed.cgColor
+                emailErrorLabel.text = errors[i].errorMessage.rawValue
             case .password:
                 passwordTextField.layer.borderColor = UIColor.systemRed.cgColor
                 passwordErrorLabel.text = errors[i].errorMessage.rawValue

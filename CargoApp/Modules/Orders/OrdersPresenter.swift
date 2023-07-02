@@ -15,6 +15,10 @@ final class OrdersPresenter {
 
 extension OrdersPresenter: OrdersPresenterProtocol {
     
+    func fetchOrders() {
+        interactor?.fetchOrders()
+    }
+    
     func goToDetailedOrder() {
         router?.goToDetailedOrder()
     }

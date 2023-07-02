@@ -47,6 +47,22 @@
 		32BA820C2A51609F007BC174 /* FirebaseInAppMessagingSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 32BA820B2A51609F007BC174 /* FirebaseInAppMessagingSwift-Beta */; };
 		32BA820E2A51609F007BC174 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 32BA820D2A51609F007BC174 /* FirebaseMessaging */; };
 		32BA82102A51609F007BC174 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 32BA820F2A51609F007BC174 /* FirebaseStorage */; };
+		32BA82132A517ABF007BC174 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BA82122A517ABF007BC174 /* ProfileViewController.swift */; };
+		32BA82152A517AC4007BC174 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BA82142A517AC4007BC174 /* ProfilePresenter.swift */; };
+		32BA82172A517ACA007BC174 /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BA82162A517ACA007BC174 /* ProfileInteractor.swift */; };
+		32BA82192A517AD0007BC174 /* ProfileModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BA82182A517AD0007BC174 /* ProfileModuleBuilder.swift */; };
+		32BA821B2A517AD5007BC174 /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BA821A2A517AD5007BC174 /* ProfileRouter.swift */; };
+		32BA821D2A517ADA007BC174 /* ProfileProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BA821C2A517ADA007BC174 /* ProfileProtocols.swift */; };
+		32BA821F2A518F7E007BC174 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BA821E2A518F7E007BC174 /* UserModel.swift */; };
+		32BA82212A5198E5007BC174 /* Orders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BA82202A5198E5007BC174 /* Orders.swift */; };
+		32BA82242A51A7B8007BC174 /* LandingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BA82232A51A7B8007BC174 /* LandingPageViewController.swift */; };
+		32BA82272A51AD2C007BC174 /* UserTypeSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BA82262A51AD2C007BC174 /* UserTypeSelectionViewController.swift */; };
+		32BA822A2A51BCCE007BC174 /* UserTypeSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BA82292A51BCCE007BC174 /* UserTypeSelectionCell.swift */; };
+		32BA822C2A51BCDB007BC174 /* EnterPhoneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BA822B2A51BCDB007BC174 /* EnterPhoneCell.swift */; };
+		32BA822E2A51BCE1007BC174 /* ConfirmPhoneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BA822D2A51BCE1007BC174 /* ConfirmPhoneCell.swift */; };
+		32BA82302A51BCE6007BC174 /* EnterEmailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BA822F2A51BCE6007BC174 /* EnterEmailCell.swift */; };
+		32BA82322A51BCEE007BC174 /* ConfirmEmailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BA82312A51BCEE007BC174 /* ConfirmEmailCell.swift */; };
+		32BA82342A51BCFF007BC174 /* PersonDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BA82332A51BCFF007BC174 /* PersonDetailsCell.swift */; };
 		32C161222A4FEC0B00034807 /* DetailedOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C161212A4FEC0B00034807 /* DetailedOrderViewController.swift */; };
 		32C161242A4FEC1100034807 /* DetailedOrderPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C161232A4FEC1100034807 /* DetailedOrderPresenter.swift */; };
 		32C161262A4FEC1600034807 /* DetailedOrderInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C161252A4FEC1600034807 /* DetailedOrderInteractor.swift */; };
@@ -104,6 +120,22 @@
 		328CF89B2A4EDDF600129CE5 /* OrdersRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersRouter.swift; sourceTree = "<group>"; };
 		328CF89E2A4EDF2200129CE5 /* OrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
 		32BA81FA2A51600D007BC174 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		32BA82122A517ABF007BC174 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		32BA82142A517AC4007BC174 /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
+		32BA82162A517ACA007BC174 /* ProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
+		32BA82182A517AD0007BC174 /* ProfileModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModuleBuilder.swift; sourceTree = "<group>"; };
+		32BA821A2A517AD5007BC174 /* ProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
+		32BA821C2A517ADA007BC174 /* ProfileProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileProtocols.swift; sourceTree = "<group>"; };
+		32BA821E2A518F7E007BC174 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		32BA82202A5198E5007BC174 /* Orders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Orders.swift; sourceTree = "<group>"; };
+		32BA82232A51A7B8007BC174 /* LandingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageViewController.swift; sourceTree = "<group>"; };
+		32BA82262A51AD2C007BC174 /* UserTypeSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTypeSelectionViewController.swift; sourceTree = "<group>"; };
+		32BA82292A51BCCE007BC174 /* UserTypeSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTypeSelectionCell.swift; sourceTree = "<group>"; };
+		32BA822B2A51BCDB007BC174 /* EnterPhoneCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPhoneCell.swift; sourceTree = "<group>"; };
+		32BA822D2A51BCE1007BC174 /* ConfirmPhoneCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPhoneCell.swift; sourceTree = "<group>"; };
+		32BA822F2A51BCE6007BC174 /* EnterEmailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterEmailCell.swift; sourceTree = "<group>"; };
+		32BA82312A51BCEE007BC174 /* ConfirmEmailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmEmailCell.swift; sourceTree = "<group>"; };
+		32BA82332A51BCFF007BC174 /* PersonDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailsCell.swift; sourceTree = "<group>"; };
 		32C161212A4FEC0B00034807 /* DetailedOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedOrderViewController.swift; sourceTree = "<group>"; };
 		32C161232A4FEC1100034807 /* DetailedOrderPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedOrderPresenter.swift; sourceTree = "<group>"; };
 		32C161252A4FEC1600034807 /* DetailedOrderInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedOrderInteractor.swift; sourceTree = "<group>"; };
@@ -192,6 +224,8 @@
 		328A9E322A4DB678007AE4DE /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				32BA82222A51A79D007BC174 /* Landing Page */,
+				32BA82112A517AB0007BC174 /* Profile */,
 				32C161202A4FEBEC00034807 /* Detailed Order */,
 				328CF8902A4EDDB400129CE5 /* Orders */,
 				328CF8812A4ECD1E00129CE5 /* Sign In */,
@@ -277,6 +311,50 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		32BA82112A517AB0007BC174 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				32BA82122A517ABF007BC174 /* ProfileViewController.swift */,
+				32BA82142A517AC4007BC174 /* ProfilePresenter.swift */,
+				32BA82162A517ACA007BC174 /* ProfileInteractor.swift */,
+				32BA82182A517AD0007BC174 /* ProfileModuleBuilder.swift */,
+				32BA821A2A517AD5007BC174 /* ProfileRouter.swift */,
+				32BA821C2A517ADA007BC174 /* ProfileProtocols.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		32BA82222A51A79D007BC174 /* Landing Page */ = {
+			isa = PBXGroup;
+			children = (
+				32BA82282A51BCBC007BC174 /* Views */,
+				32BA82252A51AD07007BC174 /* User Type */,
+				32BA82232A51A7B8007BC174 /* LandingPageViewController.swift */,
+			);
+			path = "Landing Page";
+			sourceTree = "<group>";
+		};
+		32BA82252A51AD07007BC174 /* User Type */ = {
+			isa = PBXGroup;
+			children = (
+				32BA82262A51AD2C007BC174 /* UserTypeSelectionViewController.swift */,
+			);
+			path = "User Type";
+			sourceTree = "<group>";
+		};
+		32BA82282A51BCBC007BC174 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				32BA82292A51BCCE007BC174 /* UserTypeSelectionCell.swift */,
+				32BA822B2A51BCDB007BC174 /* EnterPhoneCell.swift */,
+				32BA822D2A51BCE1007BC174 /* ConfirmPhoneCell.swift */,
+				32BA822F2A51BCE6007BC174 /* EnterEmailCell.swift */,
+				32BA82312A51BCEE007BC174 /* ConfirmEmailCell.swift */,
+				32BA82332A51BCFF007BC174 /* PersonDetailsCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		32C161202A4FEBEC00034807 /* Detailed Order */ = {
 			isa = PBXGroup;
 			children = (
@@ -317,6 +395,8 @@
 				328CF87B2A4EC72500129CE5 /* Errors.swift */,
 				328CF87D2A4EC74300129CE5 /* ErrorMessages.swift */,
 				328CF87F2A4EC7C600129CE5 /* ErrorModel.swift */,
+				32BA821E2A518F7E007BC174 /* UserModel.swift */,
+				32BA82202A5198E5007BC174 /* Orders.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -482,7 +562,9 @@
 			files = (
 				328A9E442A4DB8EE007AE4DE /* SignUpProtocols.swift in Sources */,
 				32EBEB9D2A4E90170051E966 /* Constants.swift in Sources */,
+				32BA82272A51AD2C007BC174 /* UserTypeSelectionViewController.swift in Sources */,
 				328CF87A2A4EC47900129CE5 /* UserType.swift in Sources */,
+				32BA82192A517AD0007BC174 /* ProfileModuleBuilder.swift in Sources */,
 				328CF8962A4EDDE300129CE5 /* OrdersInteractor.swift in Sources */,
 				328A9E372A4DB6ED007AE4DE /* MainTabBarController.swift in Sources */,
 				328A9E3C2A4DB8D6007AE4DE /* SignUpPresenter.swift in Sources */,
@@ -490,13 +572,17 @@
 				32C161282A4FEC1B00034807 /* DetailedOrderRouter.swift in Sources */,
 				32C161242A4FEC1100034807 /* DetailedOrderPresenter.swift in Sources */,
 				328CF88F2A4ECFA400129CE5 /* AppCoordinator.swift in Sources */,
+				32BA82172A517ACA007BC174 /* ProfileInteractor.swift in Sources */,
 				328CF8892A4ECD3C00129CE5 /* SignInRouter.swift in Sources */,
+				32BA821D2A517ADA007BC174 /* ProfileProtocols.swift in Sources */,
 				328CF8802A4EC7C600129CE5 /* ErrorModel.swift in Sources */,
 				328CF8832A4ECD2D00129CE5 /* SignInViewController.swift in Sources */,
 				328CF87C2A4EC72500129CE5 /* Errors.swift in Sources */,
 				328A9E3E2A4DB8DE007AE4DE /* SignUpInteractor.swift in Sources */,
 				328CF88D2A4ECD4700129CE5 /* SignInProtocols.swift in Sources */,
 				32C1612C2A4FEC2500034807 /* DetailedOrderProtocols.swift in Sources */,
+				32BA82212A5198E5007BC174 /* Orders.swift in Sources */,
+				32BA82322A51BCEE007BC174 /* ConfirmEmailCell.swift in Sources */,
 				328CF87E2A4EC74300129CE5 /* ErrorMessages.swift in Sources */,
 				328A9E3A2A4DB8CC007AE4DE /* SignUpViewController.swift in Sources */,
 				328CF8852A4ECD3100129CE5 /* SignInPresenter.swift in Sources */,
@@ -504,18 +590,28 @@
 				328A9E402A4DB8E4007AE4DE /* SignUpModuleBuilder.swift in Sources */,
 				32C161222A4FEC0B00034807 /* DetailedOrderViewController.swift in Sources */,
 				325A4B422A4DB2A80047C1DA /* SceneDelegate.swift in Sources */,
+				32BA821B2A517AD5007BC174 /* ProfileRouter.swift in Sources */,
 				328CF89A2A4EDDF100129CE5 /* OrdersProtocols.swift in Sources */,
 				328CF8922A4EDDD800129CE5 /* OrdersViewController.swift in Sources */,
+				32BA822A2A51BCCE007BC174 /* UserTypeSelectionCell.swift in Sources */,
+				32BA82302A51BCE6007BC174 /* EnterEmailCell.swift in Sources */,
+				32BA822E2A51BCE1007BC174 /* ConfirmPhoneCell.swift in Sources */,
 				328CF89F2A4EDF2200129CE5 /* OrderCell.swift in Sources */,
 				328CF8982A4EDDE900129CE5 /* OrdersModuleBuilder.swift in Sources */,
 				328CF8782A4EC42800129CE5 /* User.swift in Sources */,
 				328CF8872A4ECD3700129CE5 /* SignInInteractor.swift in Sources */,
+				32BA82152A517AC4007BC174 /* ProfilePresenter.swift in Sources */,
 				32C1612A2A4FEC2100034807 /* DetailedOrderModuleBuilder.swift in Sources */,
+				32BA822C2A51BCDB007BC174 /* EnterPhoneCell.swift in Sources */,
+				32BA821F2A518F7E007BC174 /* UserModel.swift in Sources */,
 				328CF88B2A4ECD4100129CE5 /* SignInModuleBuilder.swift in Sources */,
 				328A9E422A4DB8E9007AE4DE /* SignUpRouter.swift in Sources */,
+				32BA82242A51A7B8007BC174 /* LandingPageViewController.swift in Sources */,
 				328CF8942A4EDDDE00129CE5 /* OrdersPresenter.swift in Sources */,
+				32BA82132A517ABF007BC174 /* ProfileViewController.swift in Sources */,
 				32C161262A4FEC1600034807 /* DetailedOrderInteractor.swift in Sources */,
 				328CF89C2A4EDDF600129CE5 /* OrdersRouter.swift in Sources */,
+				32BA82342A51BCFF007BC174 /* PersonDetailsCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
