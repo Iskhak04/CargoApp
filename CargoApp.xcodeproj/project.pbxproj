@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		321E68A62A528E6500478FCE /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 321E68A52A528E6500478FCE /* Config.plist */; };
 		325A4B402A4DB2A80047C1DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325A4B3F2A4DB2A80047C1DA /* AppDelegate.swift */; };
 		325A4B422A4DB2A80047C1DA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325A4B412A4DB2A80047C1DA /* SceneDelegate.swift */; };
 		325A4B492A4DB2A90047C1DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 325A4B482A4DB2A90047C1DA /* Assets.xcassets */; };
@@ -88,6 +89,7 @@
 
 /* Begin PBXFileReference section */
 		1809D5ADCE95DDDFBF24475C /* Pods-CargoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CargoApp.release.xcconfig"; path = "Target Support Files/Pods-CargoApp/Pods-CargoApp.release.xcconfig"; sourceTree = "<group>"; };
+		321E68A52A528E6500478FCE /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		325A4B3C2A4DB2A80047C1DA /* CargoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CargoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		325A4B3F2A4DB2A80047C1DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		325A4B412A4DB2A80047C1DA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 				328A9E342A4DB698007AE4DE /* Application */,
 				328A9E332A4DB682007AE4DE /* Resources */,
 				328A9E322A4DB678007AE4DE /* Modules */,
+				321E68A52A528E6500478FCE /* Config.plist */,
 			);
 			path = CargoApp;
 			sourceTree = "<group>";
@@ -507,6 +510,7 @@
 				32EBEB8F2A4E8BB20051E966 /* Roboto-Light.ttf in Resources */,
 				32EBEB8E2A4E8BB20051E966 /* Roboto-Bold.ttf in Resources */,
 				325A4B492A4DB2A90047C1DA /* Assets.xcassets in Resources */,
+				321E68A62A528E6500478FCE /* Config.plist in Resources */,
 				32BA81FB2A51600D007BC174 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

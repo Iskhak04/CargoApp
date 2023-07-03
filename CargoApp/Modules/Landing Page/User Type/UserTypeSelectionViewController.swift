@@ -6,10 +6,20 @@
 //
 
 import UIKit
+import AEOTPTextField
+import RxSwift
+import RxCocoa
 
 final class UserTypeSelectionViewController: UIViewController {
     
-    private lazy var pagesCollectionVeiw: UICollectionView = {
+    var userType: UserType?
+    var phoneNumber: Int?
+    var email: String?
+    var firstName: String?
+    var lastName: String?
+    var posNumber: Int?
+    
+    lazy var pagesCollectionVeiw: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -22,7 +32,6 @@ final class UserTypeSelectionViewController: UIViewController {
         view.register(EnterEmailCell.self, forCellWithReuseIdentifier: "EnterEmailCell")
         view.register(ConfirmEmailCell.self, forCellWithReuseIdentifier: "ConfirmEmailCell")
         view.register(PersonDetailsCell.self, forCellWithReuseIdentifier: "PersonDetailsCell")
-        view.backgroundColor = .gray
         view.isPagingEnabled = true
         view.showsHorizontalScrollIndicator = false
         view.isScrollEnabled = false
@@ -55,7 +64,6 @@ final class UserTypeSelectionViewController: UIViewController {
         return button
     }()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.pagesCollectionVeiw.contentInsetAdjustmentBehavior = .never
@@ -66,10 +74,12 @@ final class UserTypeSelectionViewController: UIViewController {
     
     @objc private func carrierButtonClicked() {
         pagesCollectionVeiw.scrollToItem(at: IndexPath(row: 1, section: 0), at: [], animated: true)
+        userType = .Carrier
     }
     
     @objc private func shipperButtonClicked() {
         pagesCollectionVeiw.scrollToItem(at: IndexPath(row: 1, section: 0), at: [], animated: true)
+        userType = .Shipper
     }
     
     private func layout() {
@@ -100,18 +110,15 @@ extension UserTypeSelectionViewController: UICollectionViewDataSource, UICollect
             returnCell = cell
         case 1:
             let cell = pagesCollectionVeiw.dequeueReusableCell(withReuseIdentifier: "EnterPhoneCell", for: indexPath) as! EnterPhoneCell
-            cell.backgroundColor = .cyan
-            print(indexPath.row)
+            cell.userVC = self
             returnCell = cell
         case 2:
             let cell = pagesCollectionVeiw.dequeueReusableCell(withReuseIdentifier: "ConfirmPhoneCell", for: indexPath) as! ConfirmPhoneCell
-            cell.backgroundColor = .brown
-            print(indexPath)
+            print(phoneNumber)
             returnCell = cell
         case 3:
             let cell = pagesCollectionVeiw.dequeueReusableCell(withReuseIdentifier: "EnterEmailCell", for: indexPath) as! EnterEmailCell
-            cell.backgroundColor = .red
-            print(indexPath)
+            
             returnCell = cell
         case 4:
             let cell = pagesCollectionVeiw.dequeueReusableCell(withReuseIdentifier: "ConfirmEmailCell", for: indexPath) as! ConfirmEmailCell

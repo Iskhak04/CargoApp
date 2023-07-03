@@ -9,7 +9,8 @@ target 'CargoApp' do
 	pod 'SnapKit'
 	pod 'Alamofire'
 	pod 'Hex'
-	pod 'MapboxCoreNavigation'
-	pod 'MapboxNavigation'
+	pod 'AEOTPTextField'
+	pod 'RxSwift'
+	pod 'RxCocoa'
 
 end
