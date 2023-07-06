@@ -7,8 +7,7 @@
 
 import UIKit
 import AEOTPTextField
-import RxSwift
-import RxCocoa
+
 
 final class UserTypeSelectionViewController: UIViewController {
     

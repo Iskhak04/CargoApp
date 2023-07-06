@@ -47,8 +47,8 @@ final class DetailedOrderViewController: UIViewController {
     
     private lazy var fullScreenButton: UIButton = {
         let view = UIButton()
-        view.setImage(UIImage(systemName: "square.dashed", withConfiguration: UIImage.SymbolConfiguration(pointSize: 25, weight: .bold, scale: .large)), for: .normal)
-        view.tintColor = .black
+        view.setImage(UIImage(systemName: "arrow.up.and.down.and.arrow.left.and.right", withConfiguration: UIImage.SymbolConfiguration(pointSize: 25, weight: .bold, scale: .large)), for: .normal)
+        view.tintColor = .label
         view.addTarget(self, action: #selector(fullScreenButtonClicked), for: .touchUpInside)
         return view
     }()
@@ -63,7 +63,7 @@ final class DetailedOrderViewController: UIViewController {
     private lazy var priceLabel: UILabel = {
         let view = UILabel()
         view.text = "$1290"
-        view.font = UIFont(name: Fonts.RobotoBold.rawValue, size: 19)
+        view.font = UIFont(name: Fonts.RobotoBold.rawValue, size: 22)
         view.textColor = .systemGreen
         return view
     }()
@@ -331,7 +331,7 @@ final class DetailedOrderViewController: UIViewController {
     private lazy var shipperNameButton: UIButton = {
         let view = UIButton()
         view.setTitle("Chrissy Dorsey", for: .normal)
-        view.setTitleColor(Constants.shared.mainColor, for: .normal)
+        view.setTitleColor(UIColor.systemOrange, for: .normal)
         view.titleLabel!.font = UIFont(name: Fonts.RobotoBold.rawValue, size: 22)!
         view.addTarget(self, action: #selector(shipperNameButtonClicked), for: .touchUpInside)
         return view
@@ -369,18 +369,36 @@ final class DetailedOrderViewController: UIViewController {
         return view
     }()
     
+    private lazy var takeOrderButton: UIButton = {
+        let view = UIButton()
+        view.setTitle("Take Order", for: .normal)
+        view.backgroundColor = .label
+        view.setTitleColor(.systemBackground, for: .normal)
+        view.addTarget(self, action: #selector(takeOrderButtonClicked), for: .touchUpInside)
+        view.layer.cornerRadius = 10
+        return view
+    }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.prefersLargeTitles = false
         navigationItem.title = "Load Details"
+        navigationController?.navigationBar.tintColor = .label
         layout()
         configureMap()
+    }
+    
+    @objc private func takeOrderButtonClicked() {
+        
     }
     
     @objc private func fullScreenButtonClicked() {
         
         if isMapFullScreen {
+            
             mapView.snp.updateConstraints { make in
                 make.height.equalTo(300)
             }
@@ -393,6 +411,7 @@ final class DetailedOrderViewController: UIViewController {
             }
             isMapFullScreen = !isMapFullScreen
         } else {
+            
             mapView.snp.updateConstraints { make in
                 make.height.equalTo(view.frame.height)
             }
@@ -460,7 +479,7 @@ final class DetailedOrderViewController: UIViewController {
         contentView.snp.makeConstraints { make in
             make.top.left.right.bottom.equalToSuperview()
             make.width.equalTo(scrollView.frame.width)
-            make.height.equalTo(scrollView.snp.height).offset(110)
+            make.height.equalTo(scrollView.snp.height).offset(200)
         }
 
         scrollView.addSubview(mapView)
@@ -769,12 +788,20 @@ final class DetailedOrderViewController: UIViewController {
             make.left.equalTo(avgRatingLabel.snp.right).offset(5)
         }
         
-        scrollView.addSubview(callShipperButton)
-        callShipperButton.snp.makeConstraints { make in
-            make.top.equalTo(spaceNeededView.snp.bottom).offset(35)
-            make.right.equalTo(view.snp.right).offset(-20)
-            make.height.equalTo(70)
-            make.width.equalTo(70)
+//        scrollView.addSubview(callShipperButton)
+//        callShipperButton.snp.makeConstraints { make in
+//            make.top.equalTo(spaceNeededView.snp.bottom).offset(35)
+//            make.right.equalTo(view.snp.right).offset(-20)
+//            make.height.equalTo(70)
+//            make.width.equalTo(70)
+//        }
+        
+        scrollView.addSubview(takeOrderButton)
+        takeOrderButton.snp.makeConstraints { make in
+            make.top.equalTo(moreInfoLabel.snp.bottom).offset(30)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(50)
+            make.width.equalTo(200)
         }
     }
     
@@ -851,13 +878,13 @@ extension DetailedOrderViewController: MKMapViewDelegate {
             let image = UIImage(systemName: "arrow.up.circle.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 25, weight: .medium, scale: .large))
             
             annotationView?.backgroundColor = .white
-            annotationView?.layer.cornerRadius = 20
+            annotationView?.layer.cornerRadius = 19
             annotationView?.setPin(image: image!, with: .systemGreen)
         case "Drop Off":
             let image = UIImage(systemName: "arrow.down.circle.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 25, weight: .medium, scale: .large))
             
             annotationView?.backgroundColor = .white
-            annotationView?.layer.cornerRadius = 20
+            annotationView?.layer.cornerRadius = 19
             annotationView?.setPin(image: image!, with: .systemRed)
         default:
             ()
@@ -907,3 +934,11 @@ extension MKAnnotationView {
         self.image = image
     }
 }
+
+
+
+
+
+
+
+

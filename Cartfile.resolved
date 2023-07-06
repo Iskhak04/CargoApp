@@ -1,0 +1,4 @@
+binary "https://trimblemaps.jfrog.io/artifactory/carthage/TrimbleMaps.json" "0.1.8"
+binary "https://trimblemaps.jfrog.io/artifactory/carthage/TrimbleMapsAccounts.json" "0.1.7"
+binary "https://trimblemaps.jfrog.io/artifactory/carthage/TrimbleMapsMobileEvents.json" "0.1.5"
+github "auth0/JWTDecode.swift" "2.6.3"

@@ -2,8 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSCameraUsageDescription</key>
-	<string>This app uses the Camera to allow you to scan documents</string>
+	<key>NSLocationTemporaryUsageDescriptionDictionary</key>
+	<dict/>
+	<key>LocationAccuracyAuthorizationDescription</key>
+	<string>Please enable precise location. Turn-by-turn directions only work when precise location data is available.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Your precise location is used to calculate turn-by-turn directions, show your location on the map, and help improve the map.</string>
 	<key>MBXAccessToken</key>
 	<string>pk.eyJ1IjoiYWxwaGFtYWxlMDQiLCJhIjoiY2xqa3hpNDNiMHBraTNrcGpwMjdyNGk1eiJ9.NklG9ZX1R-iTLnIngJ5brg</string>
 	<key>UIAppFonts</key>
@@ -38,5 +42,10 @@
 			</array>
 		</dict>
 	</dict>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>audio</string>
+		<string>location</string>
+	</array>
 </dict>
 </plist>

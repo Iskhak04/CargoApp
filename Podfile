@@ -10,7 +10,5 @@ target 'CargoApp' do
 	pod 'Alamofire'
 	pod 'Hex'
 	pod 'AEOTPTextField'
-	pod 'RxSwift'
-	pod 'RxCocoa'
 
 end

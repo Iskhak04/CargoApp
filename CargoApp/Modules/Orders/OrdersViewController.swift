@@ -11,9 +11,10 @@ final class OrdersViewController: UIViewController {
     
     var presenter: OrdersPresenterProtocol?
     
-    private lazy var ordersTableView: UITableView = {
-        let view = UITableView()
-        view.register(OrderCell.self, forCellReuseIdentifier: "OrderCell")
+    private lazy var ordersCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        view.register(OrderCell.self, forCellWithReuseIdentifier: "OrderCell")
         view.dataSource = self
         view.delegate = self
         view.showsVerticalScrollIndicator = false
@@ -23,60 +24,67 @@ final class OrdersViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.fetchOrders()
+        navigationItem.title = "Orders"
+        navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.prefersLargeTitles = true
         view.backgroundColor = .systemBackground
         layout()
     }
     
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        print("hello")
+        ordersCollectionView.reloadData()
+    }
+    
     private func layout() {
-        view.addSubview(ordersTableView)
-        ordersTableView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(100)
-            make.left.equalToSuperview().offset(20)
-            make.right.equalToSuperview().offset(-20)
+        view.addSubview(ordersCollectionView)
+        ordersCollectionView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(0)
+            make.left.equalToSuperview().offset(0)
+            make.right.equalToSuperview().offset(0)
             make.bottom.equalToSuperview()
         }
     }
 }
 
-extension OrdersViewController: UITableViewDataSource, UITableViewDelegate {
+extension OrdersViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 20
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 30
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 30
     }
     
-    // Set the spacing between sections
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 2
-    }
-    
-    // Make the background color show through
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView()
-        headerView.backgroundColor = .systemBackground
-        return headerView
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = ordersTableView.dequeueReusableCell(withIdentifier: "OrderCell", for: indexPath) as! OrderCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
+        let cell = ordersCollectionView.dequeueReusableCell(withReuseIdentifier: "OrderCell", for: indexPath) as! OrderCell
+        cell.backgroundColor = .systemBackground
+        //cell.layer.shadowPath = UIBezierPath(rect: cell.bounds).cgPath
+        cell.layer.shadowColor = UIColor.label.cgColor
+        cell.layer.shadowRadius = 7
+        cell.layer.shouldRasterize = true
+        cell.layer.shadowOpacity = 0.7
+        cell.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
+        cell.layer.cornerRadius = 10
+        cell.layer.rasterizationScale = UIScreen.main.scale
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 220
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 20
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width - 40, height: 240)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         presenter?.goToDetailedOrder()
-
     }
-    
-    
+
 }
 
 extension OrdersViewController: OrdersViewProtocol {

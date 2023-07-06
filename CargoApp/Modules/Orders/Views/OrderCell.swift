@@ -7,39 +7,11 @@
 
 import UIKit
 
-final class OrderCell: UITableViewCell {
-    
-    lazy var ageView: UIView = {
-        let view = UIView()
-        return view
-    }()
-    
-    lazy var ageWordLabel: UILabel = {
-        let view = UILabel()
-        view.text = "Age"
-        view.font = UIFont(name: Fonts.RobotoRegular.rawValue, size: 15)
-        view.textColor = .gray
-        return view
-    }()
-    
-    lazy var ageLabelView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .green
-        view.layer.cornerRadius = 3
-        return view
-    }()
-    
-    lazy var ageLabel: UILabel = {
-        let view = UILabel()
-        view.text = "<1m"
-        view.font = UIFont(name: Fonts.RobotoRegular.rawValue, size: 17)
-        view.textColor = .label
-        return view
-    }()
+final class OrderCell: UICollectionViewCell {
     
     lazy var pickUpDateLabel: UILabel = {
         let view = UILabel()
-        view.text = "30 Jun"
+        view.text = "Pick Up - 30 Jun"
         view.font = UIFont(name: Fonts.RobotoRegular.rawValue, size: 20)
         return view
     }()
@@ -67,7 +39,7 @@ final class OrderCell: UITableViewCell {
     lazy var pickUpAddressLabel: UILabel = {
         let view = UILabel()
         view.text = "Birmingham, AL 35203"
-        view.font = UIFont(name: Fonts.RobotoBold.rawValue, size: 19)
+        view.font = UIFont(name: Fonts.RobotoBold.rawValue, size: 18)
         return view
     }()
     
@@ -100,7 +72,7 @@ final class OrderCell: UITableViewCell {
     lazy var dropOffAddressLabel: UILabel = {
         let view = UILabel()
         view.text = "Lometa, TX 76853"
-        view.font = UIFont(name: Fonts.RobotoBold.rawValue, size: 19)
+        view.font = UIFont(name: Fonts.RobotoBold.rawValue, size: 18)
         return view
     }()
     
@@ -164,7 +136,7 @@ final class OrderCell: UITableViewCell {
     lazy var priceLabel: UILabel = {
         let view = UILabel()
         view.text = "$1290"
-        view.font = UIFont(name: Fonts.RobotoBold.rawValue, size: 19)
+        view.font = UIFont(name: Fonts.RobotoBold.rawValue, size: 22)
         view.textColor = .systemGreen
         return view
     }()
@@ -185,7 +157,7 @@ final class OrderCell: UITableViewCell {
     lazy var shipperLabel: UILabel = {
         let view = UILabel()
         view.text = "Chrissy Dorsey"
-        view.font = UIFont(name: Fonts.RobotoRegular.rawValue, size: 17)
+        view.font = UIFont(name: Fonts.RobotoMedium.rawValue, size: 18)
         return view
     }()
     
@@ -211,36 +183,10 @@ final class OrderCell: UITableViewCell {
         
         
         
-        addSubview(ageView)
-        ageView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(0)
-            make.left.equalToSuperview().offset(5)
-            make.height.equalTo(20)
-            make.width.equalToSuperview()
-        }
-        
-        ageView.addSubview(ageWordLabel)
-        ageWordLabel.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.left.equalToSuperview()
-        }
-        
-        ageView.addSubview(ageLabelView)
-        ageLabelView.snp.makeConstraints { make in
-            make.left.equalTo(ageWordLabel.snp.right).offset(10)
-            make.centerY.equalToSuperview()
-            make.height.equalTo(20)
-            make.width.equalTo(40)
-        }
-        
-        ageLabelView.addSubview(ageLabel)
-        ageLabel.snp.makeConstraints { make in
-            make.centerY.centerX.equalToSuperview()
-        }
-        
-        ageView.addSubview(pickUpDateLabel)
+        addSubview(pickUpDateLabel)
         pickUpDateLabel.snp.makeConstraints { make in
-            make.centerY.centerX.equalToSuperview()
+            make.top.equalToSuperview().offset(15)
+            make.centerX.equalToSuperview()
         }
         
 //        ageView.addSubview(priceLabel)
@@ -251,8 +197,8 @@ final class OrderCell: UITableViewCell {
         
         addSubview(pickUpView)
         pickUpView.snp.makeConstraints { make in
-            make.top.equalTo(ageView.snp.bottom).offset(15)
-            make.left.equalToSuperview().offset(0)
+            make.top.equalTo(pickUpDateLabel.snp.bottom).offset(15)
+            make.left.equalToSuperview().offset(5)
             make.height.equalTo(40)
             make.width.equalTo(220)
         }
@@ -278,7 +224,7 @@ final class OrderCell: UITableViewCell {
         addSubview(dropOffView)
         dropOffView.snp.makeConstraints { make in
             make.top.equalTo(pickUpView.snp.bottom).offset(25)
-            make.left.equalToSuperview().offset(0)
+            make.left.equalToSuperview().offset(5)
             make.height.equalTo(40)
             make.width.equalTo(220)
         }
@@ -306,13 +252,13 @@ final class OrderCell: UITableViewCell {
             make.top.equalTo(pickUpView.snp.bottom).offset(0)
             make.bottom.equalTo(dropOffView.snp.top).offset(0)
             make.width.equalTo(2)
-            make.left.equalToSuperview().offset(23)
+            make.left.equalToSuperview().offset(28)
         }
         
         addSubview(distanceView)
         distanceView.snp.makeConstraints { make in
-            make.right.equalToSuperview().offset(0)
-            make.top.equalTo(ageView.snp.bottom).offset(15)
+            make.right.equalToSuperview().offset(-15)
+            make.top.equalTo(pickUpDateLabel.snp.bottom).offset(15)
             make.height.equalTo(25)
             make.width.equalTo(120)
         }
@@ -331,7 +277,7 @@ final class OrderCell: UITableViewCell {
         
         addSubview(vehicleTypeView)
         vehicleTypeView.snp.makeConstraints { make in
-            make.right.equalToSuperview().offset(0)
+            make.right.equalToSuperview().offset(-15)
             make.top.equalTo(distanceView.snp.bottom).offset(8)
             make.height.equalTo(25)
             make.width.equalTo(120)
@@ -351,7 +297,7 @@ final class OrderCell: UITableViewCell {
         
         addSubview(loadWeightView)
         loadWeightView.snp.makeConstraints { make in
-            make.right.equalToSuperview().offset(0)
+            make.right.equalToSuperview().offset(-15)
             make.top.equalTo(vehicleTypeView.snp.bottom).offset(8)
             make.height.equalTo(25)
             make.width.equalTo(120)
@@ -368,18 +314,13 @@ final class OrderCell: UITableViewCell {
             make.centerY.equalToSuperview()
             make.right.equalTo(loadWeightLabel.snp.left).offset(-10)
         }
-    
-        addSubview(priceLabel)
-        priceLabel.snp.makeConstraints { make in
-            make.top.equalTo(loadWeightView.snp.bottom).offset(10)
-            make.right.equalToSuperview()
-        }
         
         addSubview(shipperInformationView)
         shipperInformationView.snp.makeConstraints { make in
-            make.top.equalTo(priceLabel.snp.bottom).offset(10)
-            make.width.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-15)
+            make.right.equalToSuperview().offset(-15)
             make.height.equalTo(40)
+            make.left.equalToSuperview().offset(15)
         }
         
         shipperInformationView.addSubview(shipperWordLabel)
@@ -394,12 +335,19 @@ final class OrderCell: UITableViewCell {
             make.left.equalToSuperview()
         }
         
-        shipperInformationView.addSubview(callShipperButton)
-        callShipperButton.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
+        shipperInformationView.addSubview(priceLabel)
+        priceLabel.snp.makeConstraints { make in
+            make.bottom.equalToSuperview()
             make.right.equalToSuperview()
-            make.height.equalTo(40)
-            make.width.equalTo(120)
+            make.height.equalTo(17)
         }
+        
+//        shipperInformationView.addSubview(callShipperButton)
+//        callShipperButton.snp.makeConstraints { make in
+//            make.centerY.equalToSuperview()
+//            make.right.equalToSuperview()
+//            make.height.equalTo(40)
+//            make.width.equalTo(120)
+//        }
     }
 }
