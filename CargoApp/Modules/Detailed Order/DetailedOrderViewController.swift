@@ -11,11 +11,16 @@ import MapKit
 
 final class DetailedOrderViewController: UIViewController {
     
+    var order: OrderModel?
+    
     var presenter: DetailedOrderPresenterProtocol?
     
-    var pickUpLocation: CLLocation = CLLocation(latitude: 33.515915842143556, longitude: -86.80900570276167)
+    var pickUpLocation: CLLocation?
+    var dropOffLocation: CLLocation?
     
-    var dropOffLocation: CLLocation = CLLocation(latitude: 31.217031101244036, longitude: -98.39342797721083)
+//    var pickUpLocation: CLLocation = CLLocation(latitude: 33.515915842143556, longitude: -86.80900570276167)
+//
+//    var dropOffLocation: CLLocation = CLLocation(latitude: 31.217031101244036, longitude: -98.39342797721083)
     
     var distanceInMiles: Double = 0
     var isMapFullScreen: Bool = false
@@ -379,16 +384,22 @@ final class DetailedOrderViewController: UIViewController {
         return view
     }()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureLabels()
+        configureMap()
         view.backgroundColor = .systemBackground
         navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationItem.title = "Load Details"
         navigationController?.navigationBar.tintColor = .label
         layout()
-        configureMap()
+        
     }
     
     @objc private func takeOrderButtonClicked() {
@@ -438,20 +449,32 @@ final class DetailedOrderViewController: UIViewController {
     }
     
     private func configureMap() {
-        //calculating distance betwee pick up and drop off locations
-        distanceInMiles = calculateDistance(firstLocation: pickUpLocation, secondLocation: dropOffLocation)
+        updatePlaceMark(to: order!.pickUpLocation) { [self] pickUp in
+            print("LOndon")
+            print(pickUp.coordinate.latitude)
+     
+            self.updatePlaceMark(to: order!.dropOffLocation) { [self] dropOff in
+                //calculating distance betwee pick up and drop off locations
+                distanceInMiles = calculateDistance(firstLocation: pickUp, secondLocation: dropOff)
+                distanceLabel.text = String(format: "%.2f mi", distanceInMiles)
+                
+                //adding pin (annotatin) for pick up location
+                addAnnotation(location: pickUp, title: "Pick Up")
+                
+                //adding pin (annotatin) for drop off location
+                addAnnotation(location: dropOff, title: "Drop Off")
+                
+                //drawing a route between pick up and drop off locations
+                drawRoute(pickUpLocation: pickUp, dropOffLocatin: dropOff)
+                
+                //zooming in to the center between pick up and drop off locations
+                zoomToRegion(firstLocation: pickUp, secondLocation: dropOff)
+            }
+        }
         
-        //adding pin (annotatin) for pick up location
-        addAnnotation(location: pickUpLocation, title: "Pick Up")
         
-        //adding pin (annotatin) for drop off location
-        addAnnotation(location: dropOffLocation, title: "Drop Off")
         
-        //drawing a route between pick up and drop off locations
-        drawRoute(pickUpLocation: pickUpLocation, dropOffLocatin: dropOffLocation)
         
-        //zooming in to the center between pick up and drop off locations
-        zoomToRegion(firstLocation: pickUpLocation, secondLocation: dropOffLocation)
     }
     
     private func calculateDistance(firstLocation: CLLocation, secondLocation: CLLocation) -> Double {
@@ -463,6 +486,25 @@ final class DetailedOrderViewController: UIViewController {
         point.title = title
         point.coordinate = location.coordinate
         self.mapView.addAnnotation(point)
+    }
+    
+    func updatePlaceMark(to address: String, completion: @escaping (CLLocation) -> Void) {
+            
+        let geoCoder = CLGeocoder()
+        geoCoder.geocodeAddressString(address) { (placemarks, error) in
+            guard
+                let placemark = placemarks?.first,
+                let location = placemark.location
+            
+            else {
+                print(error?.localizedDescription)
+                return
+            }
+            
+            print(location.coordinate.latitude)
+            completion(location)
+//            self.updateLocationOnMap(to: location, with: placemark.stringValue)
+        }
     }
     
     private func layout() {
@@ -805,12 +847,27 @@ final class DetailedOrderViewController: UIViewController {
         }
     }
     
+    private func configureLabels() {
+        priceLabel.text = "$\(order?.price ?? 1)"
+        pickUpDateLabel.text = "Pick Up - \(order?.pickUpDate ?? "")"
+        pickUpAddressLabel.text = order?.pickUpLocation
+        dropOffAddressLabel.text = order?.dropOffLocation
+        vehicleTypeLabel.text = order?.vehicleType.rawValue
+        productLabel.text = order?.product
+        packagingTypeLabel.text = order?.packagingType.rawValue
+        weightLabel.text = "\(order?.productWeight ?? 1) lbs"
+        distanceLabel.text = "\(order?.distance ?? 1) mi"
+        ratePerMileLabel.text = "$\(order?.ratePerMile ?? 1.1) / mi"
+        loadIdLabel.text = "#\(order?.orderId ?? 1)"
+        spaceNeededLabel.text = order?.spaceNeeded.rawValue
+    }
+    
     private func zoomToRegion(firstLocation: CLLocation, secondLocation: CLLocation) {
         let centerLatitude = (firstLocation.coordinate.latitude + secondLocation.coordinate.latitude) / 2
         let centerLongitude = (firstLocation.coordinate.longitude + secondLocation.coordinate.longitude) / 2
         let centerLocatoin = CLLocation(latitude: centerLatitude, longitude: centerLongitude)
         
-        let viewRegion = MKCoordinateRegion(center: centerLocatoin.coordinate, latitudinalMeters: 1000000, longitudinalMeters: 1000000)
+        let viewRegion = MKCoordinateRegion(center: centerLocatoin.coordinate, latitudinalMeters: 2000000, longitudinalMeters: 2000000)
         self.mapView.setRegion(viewRegion, animated: true)
         
     }

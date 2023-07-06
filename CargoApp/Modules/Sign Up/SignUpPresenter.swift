@@ -15,20 +15,26 @@ final class SignUpPresenter {
 
 extension SignUpPresenter: SignUpPresenterProtocol {
     
+    func registerNewCarrier(carrier: Carrier) {
+        interactor?.registerNewCarrier(carrier: carrier)
+    }
+    
+    func registerNewShipper(shipper: Shipper) {
+        interactor?.registerNewShipper(shipper: shipper)
+    }
+    
     func goToSignIn() {
         router?.goToSignIn()
     }
     
     func sendErrorMessages(errors: [ErrorModel]) {
+        print(errors.count)
         view?.sendErrorMessages(errors: errors)
     }
     
     func sendSuccessStatus() {
         router?.sendSuccessStatus()
     }
-    
-    func newUserData(user: User) {
-        interactor?.newUserData(user: user)
-    }
+
     
 }

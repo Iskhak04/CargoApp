@@ -8,12 +8,13 @@
 import UIKit
 
 final class DetailedOrderModuleBuilder {
-    class func build() -> UIViewController {
+    class func build(order: OrderModel) -> UIViewController {
         let view = DetailedOrderViewController()
         let presenter = DetailedOrderPresenter()
         let interactor = DetailedOrderInteractor()
         let router = DetailedOrderRouter()
         
+        view.order = order
         view.presenter = presenter
         
         presenter.interactor = interactor

@@ -8,6 +8,8 @@
 struct UserModel: Codable {
     let firstName: String
     let lastName: String
-    let profileImage: String
-    let userSince: String
+    let dotNumber: Int
+    let isShipper: Bool
+    let ordersCount: Int
+    let memberSince: String
 }

@@ -14,7 +14,8 @@ protocol SignUpViewProtocol {
 protocol SignUpPresenterProtocol {
     
     //View -> Presenter
-    func newUserData(user: User)
+    func registerNewCarrier(carrier: Carrier)
+    func registerNewShipper(shipper: Shipper)
     func goToSignIn()
     
     //Interactor -> Presenter
@@ -24,7 +25,8 @@ protocol SignUpPresenterProtocol {
 
 //Conforms Interactor, Presenter -> Interactor
 protocol SignUpInteractorProtocol {
-    func newUserData(user: User)
+    func registerNewCarrier(carrier: Carrier)
+    func registerNewShipper(shipper: Shipper)
 }
 
 //Conforms Router, Presenter -> Router

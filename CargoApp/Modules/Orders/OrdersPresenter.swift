@@ -19,8 +19,8 @@ extension OrdersPresenter: OrdersPresenterProtocol {
         interactor?.fetchOrders()
     }
     
-    func goToDetailedOrder() {
-        router?.goToDetailedOrder()
+    func goToDetailedOrder(order: OrderModel) {
+        router?.goToDetailedOrder(order: order)
     }
     
 }

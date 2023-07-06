@@ -28,7 +28,7 @@ final class SignInViewController: UIViewController {
     
     private lazy var emailTextFieldPaddingView: UIView = {
         let view = UIView()
-        view.frame = CGRect(x: 0, y: 0, width: 10, height: 20)
+        view.frame = CGRect(x: 0, y: 0, width: 15, height: 20)
         return view
     }()
     
@@ -56,15 +56,9 @@ final class SignInViewController: UIViewController {
         let view = UITextField()
         view.autocorrectionType = .no
         view.autocapitalizationType = .none
-        view.layer.borderColor = Constants.shared.textFieldsBorderColor
-        view.layer.borderWidth = 1
         view.layer.cornerRadius = 7
-        view.leftView = passwordTextFieldPaddingView
-        view.leftViewMode = .always
         view.defaultTextAttributes = [NSAttributedString.Key.font : Constants.shared.textFieldTextFont!]
         view.isSecureTextEntry = true
-        view.rightView = revealPasswordButton
-        view.rightViewMode = .always
         view.delegate = self
         return view
     }()
@@ -76,9 +70,11 @@ final class SignInViewController: UIViewController {
         return view
     }()
     
-    private lazy var passwordTextFieldPaddingView: UIView = {
+    private lazy var passwordBgView: UIView = {
         let view = UIView()
-        view.frame = CGRect(x: 0, y: 0, width: 10, height: 20)
+        view.layer.cornerRadius = 7
+        view.layer.borderColor = Constants.shared.textFieldsBorderColor
+        view.layer.borderWidth = 1
         return view
     }()
     
@@ -91,7 +87,7 @@ final class SignInViewController: UIViewController {
     private lazy var revealPasswordButton: UIButton = {
         let view = UIButton()
         view.setImage(UIImage(systemName: "eye", withConfiguration: UIImage.SymbolConfiguration(pointSize: 15, weight: .medium, scale: .large)), for: .normal)
-        view.tintColor = .black
+        view.tintColor = .label
         view.addTarget(self, action: #selector(revealPasswordButtonClicked), for: .touchUpInside)
         return view
     }()
@@ -150,7 +146,13 @@ final class SignInViewController: UIViewController {
     }
     
     @objc private func revealPasswordButtonClicked() {
-        passwordTextField.isSecureTextEntry = !passwordTextField.isSecureTextEntry
+        if passwordTextField.isSecureTextEntry {
+            revealPasswordButton.setImage(UIImage(systemName: "eye.slash", withConfiguration: UIImage.SymbolConfiguration(pointSize: 15, weight: .medium, scale: .large)), for: .normal)
+            passwordTextField.isSecureTextEntry = !passwordTextField.isSecureTextEntry
+        } else {
+            revealPasswordButton.setImage(UIImage(systemName: "eye", withConfiguration: UIImage.SymbolConfiguration(pointSize: 15, weight: .medium, scale: .large)), for: .normal)
+            passwordTextField.isSecureTextEntry = !passwordTextField.isSecureTextEntry
+        }
     }
     
     @objc private func signUpButtonClicked() {
@@ -203,15 +205,30 @@ final class SignInViewController: UIViewController {
             make.left.equalToSuperview().offset(20)
         }
         
-        view.addSubview(passwordTextField)
-        passwordTextField.snp.makeConstraints { make in
+        view.addSubview(passwordBgView)
+        passwordBgView.snp.makeConstraints { make in
             make.top.equalTo(passwordTitleLabel.snp.bottom).offset(10)
             make.left.equalToSuperview().offset(20)
             make.right.equalToSuperview().offset(-20)
             make.height.equalTo(35)
         }
         
-        view.addSubview(passwordErrorLabel)
+        passwordBgView.addSubview(revealPasswordButton)
+        revealPasswordButton.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.right.equalToSuperview().offset(-15)
+            make.height.equalToSuperview()
+            make.width.equalTo(passwordBgView.snp.height)
+        }
+        
+        passwordBgView.addSubview(passwordTextField)
+        passwordTextField.snp.makeConstraints { make in
+            make.top.bottom.equalToSuperview()
+            make.left.equalToSuperview().offset(15)
+            make.right.equalTo(revealPasswordButton.snp.left).offset(-10)
+        }
+        
+        passwordBgView.addSubview(passwordErrorLabel)
         passwordErrorLabel.snp.makeConstraints { make in
             make.top.equalTo(passwordTextField.snp.bottom).offset(5)
             make.left.equalToSuperview().offset(20)
@@ -273,7 +290,7 @@ extension SignInViewController: SignInViewProtocol {
         //notify about error
         for i in 0..<errors.count {
             switch errors[i].error {
-            case .username:
+            case .email:
                 emailTextField.layer.borderColor = UIColor.systemRed.cgColor
                 emailErrorLabel.text = errors[i].errorMessage.rawValue
             case .password:

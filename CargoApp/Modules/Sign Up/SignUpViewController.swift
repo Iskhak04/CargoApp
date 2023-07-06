@@ -7,15 +7,17 @@
 
 import UIKit
 import SnapKit
+import FirebaseStorage
 
 final class SignUpViewController: UIViewController {
     
     var presenter: SignUpPresenterProtocol?
     
+    
     private lazy var signUpTitleLabel: UILabel = {
         let view = UILabel()
         view.text = "Sign Up"
-        view.font = UIFont(name: Fonts.RobotoBold.rawValue, size: 35)
+        view.font = UIFont(name: Fonts.RobotoBold.rawValue, size: 40)
         view.textColor = .label
         return view
     }()
@@ -27,7 +29,9 @@ final class SignUpViewController: UIViewController {
         view.setTitleTextAttributes([NSAttributedString.Key.font : UIFont(name: Fonts.RobotoRegular.rawValue, size: 18)!, NSAttributedString.Key.foregroundColor : UIColor.black], for: .normal)
         view.selectedSegmentTintColor = Constants.shared.mainColor
         view.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.white], for: .selected)
+        view.addTarget(self, action: #selector(userTypeSegmentChanged), for: .valueChanged)
         view.backgroundColor = .white
+        view.selectedSegmentIndex = 1
         return view
     }()
     
@@ -37,34 +41,67 @@ final class SignUpViewController: UIViewController {
         return view
     }()
     
-    private lazy var usernameTitleLabel: UILabel = {
+    private lazy var firstNameTitleLabel: UILabel = {
         let view = UILabel()
-        view.text = "Username"
+        view.text = "First Name"
         view.font = Constants.shared.labelAboveTextFieldFont
         return view
     }()
     
-    private lazy var usernameTextFieldPaddingView: UIView = {
+    private lazy var firstNameTextFieldPaddingView: UIView = {
         let view = UIView()
-        view.frame = CGRect(x: 0, y: 0, width: 10, height: 20)
+        view.frame = CGRect(x: 0, y: 0, width: 15, height: 20)
         return view
     }()
     
-    private lazy var usernameTextField: UITextField = {
+    private lazy var firstNameTextField: UITextField = {
         let view = UITextField()
         view.autocorrectionType = .no
         view.autocapitalizationType = .none
         view.layer.borderColor = Constants.shared.textFieldsBorderColor
         view.layer.borderWidth = 1
         view.layer.cornerRadius = 7
-        view.leftView = usernameTextFieldPaddingView
+        view.leftView = firstNameTextFieldPaddingView
         view.leftViewMode = .always
         view.defaultTextAttributes = [NSAttributedString.Key.font : Constants.shared.textFieldTextFont!]
         view.delegate = self
         return view
     }()
     
-    private lazy var usernameErrorLabel: UILabel = {
+    private lazy var firstNameErrorLabel: UILabel = {
+        let view = UILabel()
+        view.textColor = .systemRed
+        return view
+    }()
+    
+    private lazy var lastNameTitleLabel: UILabel = {
+        let view = UILabel()
+        view.text = "Last Name"
+        view.font = Constants.shared.labelAboveTextFieldFont
+        return view
+    }()
+    
+    private lazy var lastNameTextFieldPaddingView: UIView = {
+        let view = UIView()
+        view.frame = CGRect(x: 0, y: 0, width: 15, height: 20)
+        return view
+    }()
+    
+    private lazy var lastNameTextField: UITextField = {
+        let view = UITextField()
+        view.autocorrectionType = .no
+        view.autocapitalizationType = .none
+        view.layer.borderColor = Constants.shared.textFieldsBorderColor
+        view.layer.borderWidth = 1
+        view.layer.cornerRadius = 7
+        view.leftView = lastNameTextFieldPaddingView
+        view.leftViewMode = .always
+        view.defaultTextAttributes = [NSAttributedString.Key.font : Constants.shared.textFieldTextFont!]
+        view.delegate = self
+        return view
+    }()
+    
+    private lazy var lastNameErrorLabel: UILabel = {
         let view = UILabel()
         view.textColor = .systemRed
         return view
@@ -79,7 +116,7 @@ final class SignUpViewController: UIViewController {
     
     private lazy var emailTextFieldPaddingView: UIView = {
         let view = UIView()
-        view.frame = CGRect(x: 0, y: 0, width: 10, height: 20)
+        view.frame = CGRect(x: 0, y: 0, width: 15, height: 20)
         return view
     }()
     
@@ -107,16 +144,18 @@ final class SignUpViewController: UIViewController {
         let view = UITextField()
         view.autocorrectionType = .no
         view.autocapitalizationType = .none
-        view.layer.borderColor = Constants.shared.textFieldsBorderColor
-        view.layer.borderWidth = 1
         view.layer.cornerRadius = 7
-        view.leftView = passwordTextFieldPaddingView
-        view.leftViewMode = .always
         view.defaultTextAttributes = [NSAttributedString.Key.font : Constants.shared.textFieldTextFont!]
         view.isSecureTextEntry = true
-        view.rightView = revealPasswordButton
-        view.rightViewMode = .always
         view.delegate = self
+        return view
+    }()
+    
+    private lazy var passwordBgView: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = 7
+        view.layer.borderColor = Constants.shared.textFieldsBorderColor
+        view.layer.borderWidth = 1
         return view
     }()
     
@@ -127,56 +166,52 @@ final class SignUpViewController: UIViewController {
         return view
     }()
     
-    private lazy var passwordTextFieldPaddingView: UIView = {
-        let view = UIView()
-        view.frame = CGRect(x: 0, y: 0, width: 10, height: 20)
-        return view
-    }()
-    
     private lazy var passwordErrorLabel: UILabel = {
         let view = UILabel()
         view.textColor = .systemRed
         return view
     }()
     
-    private lazy var repeatPasswordTextField: UITextField = {
+    private lazy var dotNumberTextField: UITextField = {
         let view = UITextField()
         view.autocorrectionType = .no
         view.autocapitalizationType = .none
         view.layer.borderColor = Constants.shared.textFieldsBorderColor
         view.layer.borderWidth = 1
         view.layer.cornerRadius = 7
-        view.leftView = repeatPasswordTextFieldPaddingView
+        view.leftView = dotNumberTextFieldPaddingView
         view.leftViewMode = .always
         view.defaultTextAttributes = [NSAttributedString.Key.font : Constants.shared.textFieldTextFont!]
-        view.isSecureTextEntry = true
         view.delegate = self
+        view.isHidden = true
         return view
     }()
     
-    private lazy var repeatPasswordTitleLabel: UILabel = {
+    private lazy var dotNumberTitleLabel: UILabel = {
         let view = UILabel()
-        view.text = "Repeat Password"
+        view.text = "DOT Number"
         view.font = Constants.shared.labelAboveTextFieldFont
+        view.isHidden = true
         return view
     }()
     
-    private lazy var repeatPasswordTextFieldPaddingView: UIView = {
+    private lazy var dotNumberTextFieldPaddingView: UIView = {
         let view = UIView()
-        view.frame = CGRect(x: 0, y: 0, width: 10, height: 20)
+        view.frame = CGRect(x: 0, y: 0, width: 15, height: 20)
         return view
     }()
     
-    private lazy var repeatPasswordErrorLabel: UILabel = {
+    private lazy var dotNumberErrorLabel: UILabel = {
         let view = UILabel()
         view.textColor = .systemRed
+        view.isHidden = true
         return view
     }()
     
     private lazy var revealPasswordButton: UIButton = {
         let view = UIButton()
         view.setImage(UIImage(systemName: "eye", withConfiguration: UIImage.SymbolConfiguration(pointSize: 15, weight: .medium, scale: .large)), for: .normal)
-        view.tintColor = .black
+        view.tintColor = .label
         view.addTarget(self, action: #selector(revealPasswordButtonClicked), for: .touchUpInside)
         return view
     }()
@@ -216,9 +251,63 @@ final class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("view sign up")
         navigationItem.hidesBackButton = true
         view.backgroundColor = .systemBackground
         layout()
+    }
+    
+    @objc private func userTypeSegmentChanged() {
+        //user is a Carrier
+        if userTypeSegmentedControl.selectedSegmentIndex == 0 {
+            dotNumberTextField.isHidden = false
+            dotNumberErrorLabel.isHidden = false
+            dotNumberTitleLabel.isHidden = false
+            dotNumberTextField.text = ""
+            dotNumberErrorLabel.text = ""
+            
+            firstNameTextField.layer.borderColor = Constants.shared.textFieldsBorderColor
+            lastNameTextField.layer.borderColor = Constants.shared.textFieldsBorderColor
+            emailTextField.layer.borderColor = Constants.shared.textFieldsBorderColor
+            passwordTextField.layer.borderColor = Constants.shared.textFieldsBorderColor
+            dotNumberTextField.layer.borderColor = Constants.shared.textFieldsBorderColor
+            
+            firstNameErrorLabel.text = ""
+            lastNameErrorLabel.text = ""
+            emailErrorLabel.text = ""
+            passwordErrorLabel.text = ""
+            userTypeErrorLabel.text = ""
+            
+            firstNameTextField.text = ""
+            lastNameTextField.text = ""
+            emailTextField.text = ""
+            passwordTextField.text = ""
+            dotNumberTextField.text = ""
+        }
+        //user is a Shipper
+        else {
+            dotNumberTextField.isHidden = true
+            dotNumberErrorLabel.isHidden = true
+            dotNumberTitleLabel.isHidden = true
+            
+            firstNameTextField.layer.borderColor = Constants.shared.textFieldsBorderColor
+            lastNameTextField.layer.borderColor = Constants.shared.textFieldsBorderColor
+            emailTextField.layer.borderColor = Constants.shared.textFieldsBorderColor
+            passwordTextField.layer.borderColor = Constants.shared.textFieldsBorderColor
+            dotNumberTextField.layer.borderColor = Constants.shared.textFieldsBorderColor
+            
+            firstNameErrorLabel.text = ""
+            lastNameErrorLabel.text = ""
+            emailErrorLabel.text = ""
+            passwordErrorLabel.text = ""
+            userTypeErrorLabel.text = ""
+            
+            firstNameTextField.text = ""
+            lastNameTextField.text = ""
+            emailTextField.text = ""
+            passwordTextField.text = ""
+            dotNumberTextField.text = ""
+        }
     }
                             
     @objc private func signInButtonClicked() {
@@ -227,75 +316,122 @@ final class SignUpViewController: UIViewController {
     
     @objc private func signUpButtonClicked() {
         
-        usernameTextField.layer.borderColor = Constants.shared.textFieldsBorderColor
+        firstNameTextField.layer.borderColor = Constants.shared.textFieldsBorderColor
+        lastNameTextField.layer.borderColor = Constants.shared.textFieldsBorderColor
         emailTextField.layer.borderColor = Constants.shared.textFieldsBorderColor
         passwordTextField.layer.borderColor = Constants.shared.textFieldsBorderColor
-        repeatPasswordTextField.layer.borderColor = Constants.shared.textFieldsBorderColor
+        dotNumberTextField.layer.borderColor = Constants.shared.textFieldsBorderColor
         
-        usernameErrorLabel.text = ""
+        firstNameErrorLabel.text = ""
+        lastNameErrorLabel.text = ""
         emailErrorLabel.text = ""
         passwordErrorLabel.text = ""
-        repeatPasswordErrorLabel.text = ""
+        dotNumberErrorLabel.text = ""
         userTypeErrorLabel.text = ""
         
-        guard let username = usernameTextField.text, let email = emailTextField.text, let password = passwordTextField.text, let repeatPassword = repeatPasswordTextField.text else { return }
+        //user is Carrier
+        if userTypeSegmentedControl.selectedSegmentIndex == 0 {
+            guard let firstName = firstNameTextField.text, let email = emailTextField.text, let password = passwordTextField.text, let dotNumber = dotNumberTextField.text, let lastName = lastNameTextField.text else { return }
+            
+            let newCarrier = Carrier(firstName: firstName, lastName: lastName, email: email, password: password, dotNumber: Int(dotNumber) ?? -1)
+            
+            presenter?.registerNewCarrier(carrier: newCarrier)
+        }
+        //user is Shipper
+        else {
+            guard let firstName = firstNameTextField.text, let email = emailTextField.text, let password = passwordTextField.text, let lastName = lastNameTextField.text else { return }
+            
+            let newShipper = Shipper(firstName: firstName, lastName: lastName, email: email, password: password)
+            
+            presenter?.registerNewShipper(shipper: newShipper)
+        }
         
-        //sending new user data to presenter
-        presenter?.newUserData(user: User(username: username, email: email, password: password, repeatPassword: repeatPassword, userTypeInt: userTypeSegmentedControl.selectedSegmentIndex))
+    
+//        let storage = Storage.storage().reference().child("mal.jpg")
+//        NetworkLayer.shared.uploadImage(UIImage(named: "driver")!, at: storage) { url in
+//            print("success image driver")
+//            print(url)
+//        }
         
     }
     
     @objc private func revealPasswordButtonClicked() {
-        passwordTextField.isSecureTextEntry = !passwordTextField.isSecureTextEntry
-        repeatPasswordTextField.isSecureTextEntry = !repeatPasswordTextField.isSecureTextEntry
+        if passwordTextField.isSecureTextEntry {
+            revealPasswordButton.setImage(UIImage(systemName: "eye.slash", withConfiguration: UIImage.SymbolConfiguration(pointSize: 15, weight: .medium, scale: .large)), for: .normal)
+            passwordTextField.isSecureTextEntry = !passwordTextField.isSecureTextEntry
+        } else {
+            revealPasswordButton.setImage(UIImage(systemName: "eye", withConfiguration: UIImage.SymbolConfiguration(pointSize: 15, weight: .medium, scale: .large)), for: .normal)
+            passwordTextField.isSecureTextEntry = !passwordTextField.isSecureTextEntry
+        }
+        
     }
     
     private func layout() {
         view.addSubview(signUpTitleLabel)
         signUpTitleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(120)
+            make.top.equalToSuperview().offset(90)
             make.centerX.equalToSuperview()
         }
         
         view.addSubview(userTypeSegmentedControl)
         userTypeSegmentedControl.snp.makeConstraints { make in
-            make.top.equalTo(signUpTitleLabel.snp.bottom).offset(50)
+            make.top.equalTo(signUpTitleLabel.snp.bottom).offset(30)
             make.centerX.equalToSuperview()
             make.height.equalTo(50)
         }
-        
+
         view.addSubview(userTypeErrorLabel)
         userTypeErrorLabel.snp.makeConstraints { make in
             make.top.equalTo(userTypeSegmentedControl.snp.bottom).offset(10)
             make.centerX.equalToSuperview()
         }
-        
-        view.addSubview(usernameTitleLabel)
-        usernameTitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(userTypeSegmentedControl.snp.bottom).offset(50)
+
+        view.addSubview(firstNameTitleLabel)
+        firstNameTitleLabel.snp.makeConstraints { make in
+            make.top.equalTo(userTypeSegmentedControl.snp.bottom).offset(40)
             make.left.equalToSuperview().offset(20)
         }
-        
-        view.addSubview(usernameTextField)
-        usernameTextField.snp.makeConstraints { make in
-            make.top.equalTo(usernameTitleLabel.snp.bottom).offset(10)
+
+        view.addSubview(firstNameTextField)
+        firstNameTextField.snp.makeConstraints { make in
+            make.top.equalTo(firstNameTitleLabel.snp.bottom).offset(10)
             make.left.equalToSuperview().offset(20)
             make.right.equalToSuperview().offset(-20)
             make.height.equalTo(35)
         }
-        
-        view.addSubview(usernameErrorLabel)
-        usernameErrorLabel.snp.makeConstraints { make in
-            make.top.equalTo(usernameTextField.snp.bottom).offset(5)
+
+        view.addSubview(firstNameErrorLabel)
+        firstNameErrorLabel.snp.makeConstraints { make in
+            make.top.equalTo(firstNameTextField.snp.bottom).offset(5)
             make.left.equalToSuperview().offset(20)
         }
-        
+
+        view.addSubview(lastNameTitleLabel)
+        lastNameTitleLabel.snp.makeConstraints { make in
+            make.top.equalTo(firstNameTextField.snp.bottom).offset(35)
+            make.left.equalToSuperview().offset(20)
+        }
+
+        view.addSubview(lastNameTextField)
+        lastNameTextField.snp.makeConstraints { make in
+            make.top.equalTo(lastNameTitleLabel.snp.bottom).offset(10)
+            make.left.equalToSuperview().offset(20)
+            make.right.equalToSuperview().offset(-20)
+            make.height.equalTo(35)
+        }
+
+        view.addSubview(lastNameErrorLabel)
+        lastNameErrorLabel.snp.makeConstraints { make in
+            make.top.equalTo(lastNameTextField.snp.bottom).offset(5)
+            make.left.equalToSuperview().offset(20)
+        }
+
         view.addSubview(emailTitleLabel)
         emailTitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(usernameTextField.snp.bottom).offset(35)
+            make.top.equalTo(lastNameTextField.snp.bottom).offset(35)
             make.left.equalToSuperview().offset(20)
         }
-        
+
         view.addSubview(emailTextField)
         emailTextField.snp.makeConstraints { make in
             make.top.equalTo(emailTitleLabel.snp.bottom).offset(10)
@@ -303,53 +439,68 @@ final class SignUpViewController: UIViewController {
             make.right.equalToSuperview().offset(-20)
             make.height.equalTo(35)
         }
-        
+
         view.addSubview(emailErrorLabel)
         emailErrorLabel.snp.makeConstraints { make in
             make.top.equalTo(emailTextField.snp.bottom).offset(5)
             make.left.equalToSuperview().offset(20)
         }
-        
+
         view.addSubview(passwordTitleLabel)
         passwordTitleLabel.snp.makeConstraints { make in
             make.top.equalTo(emailTextField.snp.bottom).offset(35)
             make.left.equalToSuperview().offset(20)
         }
         
-        view.addSubview(passwordTextField)
-        passwordTextField.snp.makeConstraints { make in
+        view.addSubview(passwordBgView)
+        passwordBgView.snp.makeConstraints { make in
             make.top.equalTo(passwordTitleLabel.snp.bottom).offset(10)
             make.left.equalToSuperview().offset(20)
             make.right.equalToSuperview().offset(-20)
             make.height.equalTo(35)
         }
         
+        passwordBgView.addSubview(revealPasswordButton)
+        revealPasswordButton.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.right.equalToSuperview().offset(-15)
+            make.height.equalToSuperview()
+            make.width.equalTo(passwordBgView.snp.height)
+        }
+
+        passwordBgView.addSubview(passwordTextField)
+        passwordTextField.snp.makeConstraints { make in
+            make.top.bottom.equalToSuperview()
+            make.left.equalToSuperview().offset(15)
+            make.right.equalTo(revealPasswordButton.snp.left).offset(-10)
+        }
+
         view.addSubview(passwordErrorLabel)
         passwordErrorLabel.snp.makeConstraints { make in
             make.top.equalTo(passwordTextField.snp.bottom).offset(5)
             make.left.equalToSuperview().offset(20)
         }
-        
-        view.addSubview(repeatPasswordTitleLabel)
-        repeatPasswordTitleLabel.snp.makeConstraints { make in
+
+        view.addSubview(dotNumberTitleLabel)
+        dotNumberTitleLabel.snp.makeConstraints { make in
             make.top.equalTo(passwordTextField.snp.bottom).offset(35)
             make.left.equalToSuperview().offset(20)
         }
-        
-        view.addSubview(repeatPasswordTextField)
-        repeatPasswordTextField.snp.makeConstraints { make in
-            make.top.equalTo(repeatPasswordTitleLabel.snp.bottom).offset(10)
+
+        view.addSubview(dotNumberTextField)
+        dotNumberTextField.snp.makeConstraints { make in
+            make.top.equalTo(dotNumberTitleLabel.snp.bottom).offset(10)
             make.left.equalToSuperview().offset(20)
             make.right.equalToSuperview().offset(-20)
             make.height.equalTo(35)
         }
-        
-        view.addSubview(repeatPasswordErrorLabel)
-        repeatPasswordErrorLabel.snp.makeConstraints { make in
-            make.top.equalTo(repeatPasswordTextField.snp.bottom).offset(5)
+
+        view.addSubview(dotNumberErrorLabel)
+        dotNumberErrorLabel.snp.makeConstraints { make in
+            make.top.equalTo(dotNumberTextField.snp.bottom).offset(5)
             make.left.equalToSuperview().offset(20)
         }
-        
+
         view.addSubview(signUpButton)
         signUpButton.snp.makeConstraints { make in
             make.bottom.equalToSuperview().offset(-60)
@@ -357,7 +508,7 @@ final class SignUpViewController: UIViewController {
             make.height.equalTo(60)
             make.width.equalTo(260)
         }
-        
+
         view.addSubview(signInView)
         signInView.snp.makeConstraints { make in
             make.bottom.equalTo(signUpButton.snp.top).offset(-15)
@@ -365,13 +516,13 @@ final class SignUpViewController: UIViewController {
             make.width.equalTo(view.frame.width - 204)
             make.height.equalTo(23)
         }
-        
+
         signInView.addSubview(haveAnAccountLabel)
         haveAnAccountLabel.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.left.equalToSuperview()
         }
-        
+
         signInView.addSubview(signInButton)
         signInButton.snp.makeConstraints { make in
             make.left.equalTo(haveAnAccountLabel.snp.right).offset(5)
@@ -404,17 +555,18 @@ extension SignUpViewController: SignUpViewProtocol {
             case .email:
                 emailTextField.layer.borderColor = UIColor.systemRed.cgColor
                 emailErrorLabel.text = errors[i].errorMessage.rawValue
-            case .username:
-                usernameTextField.layer.borderColor = UIColor.systemRed.cgColor
-                usernameErrorLabel.text = errors[i].errorMessage.rawValue
+            case .firstName:
+                firstNameTextField.layer.borderColor = UIColor.systemRed.cgColor
+                firstNameErrorLabel.text = errors[i].errorMessage.rawValue
             case .password:
                 passwordTextField.layer.borderColor = UIColor.systemRed.cgColor
                 passwordErrorLabel.text = errors[i].errorMessage.rawValue
-            case .repeatPassword:
-                repeatPasswordTextField.layer.borderColor = UIColor.systemRed.cgColor
-                repeatPasswordErrorLabel.text = errors[i].errorMessage.rawValue
-            case .userType:
-                userTypeErrorLabel.text = errors[i].errorMessage.rawValue
+            case .lastName:
+                lastNameTextField.layer.borderColor = UIColor.systemRed.cgColor
+                lastNameErrorLabel.text = errors[i].errorMessage.rawValue
+            case .dotNumber:
+                dotNumberTextField.layer.borderColor = UIColor.systemRed.cgColor
+                dotNumberErrorLabel.text = errors[i].errorMessage.rawValue
             }
         }
 

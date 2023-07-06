@@ -10,5 +10,6 @@ target 'CargoApp' do
 	pod 'Alamofire'
 	pod 'Hex'
 	pod 'AEOTPTextField'
+	pod 'SVProgressHUD'
 
 end

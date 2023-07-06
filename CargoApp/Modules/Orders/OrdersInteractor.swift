@@ -18,17 +18,17 @@ extension OrdersInteractor: OrdersInteractorProtocol {
     
     func fetchOrders() {
         
-        let child = ref.child("orders")
-        
-        child.observeSingleEvent(of: .value) { snapshot  in
-            do {
-                let object = try snapshot.data(as: OrderModel.self)
-                print("hello")
-            } catch let error{
-                print("world \(error.localizedDescription)")
-            }
-            
-        }
+//        let child = ref.child("orders")
+//        
+//        child.observeSingleEvent(of: .value) { snapshot  in
+//            do {
+//                let object = try snapshot.data(as: OrderModel.self)
+//                print("hello")
+//            } catch let error{
+//                print("world \(error.localizedDescription)")
+//            }
+//            
+//        }
         
     }
     

@@ -15,11 +15,11 @@ final class OrdersRouter {
 
 extension OrdersRouter: OrdersRouterProtocol {
 
-    func goToDetailedOrder() {
+    func goToDetailedOrder(order: OrderModel) {
         //go to detailed order page
 
         viewController?.navigationController?.dismiss(animated: true)
-        viewController?.navigationController?.pushViewController(DetailedOrderModuleBuilder.build(), animated: true)
+        viewController?.navigationController?.pushViewController(DetailedOrderModuleBuilder.build(order: order), animated: true)
     }
     
 }

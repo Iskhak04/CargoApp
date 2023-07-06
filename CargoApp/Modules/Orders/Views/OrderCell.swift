@@ -16,6 +16,13 @@ final class OrderCell: UICollectionViewCell {
         return view
     }()
     
+    lazy var orderIdLabel: UILabel = {
+        let view = UILabel()
+        view.text = "#1"
+        view.font = UIFont(name: Fonts.RobotoBold.rawValue, size: 18)
+        return view
+    }()
+    
     lazy var pickUpView: UIView = {
         let view = UIView()
         return view
@@ -187,6 +194,12 @@ final class OrderCell: UICollectionViewCell {
         pickUpDateLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(15)
             make.centerX.equalToSuperview()
+        }
+        
+        addSubview(orderIdLabel)
+        orderIdLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(15)
+            make.right.equalToSuperview().offset(-15)
         }
         
 //        ageView.addSubview(priceLabel)

@@ -6,10 +6,10 @@
 //
 
 enum Errors {
-    case username
+    case firstName
+    case lastName
     case password
-    case repeatPassword
     case email
-    case userType
+    case dotNumber
 }
 

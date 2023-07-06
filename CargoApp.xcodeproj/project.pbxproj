@@ -21,7 +21,7 @@
 		328A9E402A4DB8E4007AE4DE /* SignUpModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328A9E3F2A4DB8E4007AE4DE /* SignUpModuleBuilder.swift */; };
 		328A9E422A4DB8E9007AE4DE /* SignUpRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328A9E412A4DB8E9007AE4DE /* SignUpRouter.swift */; };
 		328A9E442A4DB8EE007AE4DE /* SignUpProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328A9E432A4DB8EE007AE4DE /* SignUpProtocols.swift */; };
-		328CF8782A4EC42800129CE5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328CF8772A4EC42800129CE5 /* User.swift */; };
+		328CF8782A4EC42800129CE5 /* Carrier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328CF8772A4EC42800129CE5 /* Carrier.swift */; };
 		328CF87A2A4EC47900129CE5 /* UserType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328CF8792A4EC47900129CE5 /* UserType.swift */; };
 		328CF87C2A4EC72500129CE5 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328CF87B2A4EC72500129CE5 /* Errors.swift */; };
 		328CF87E2A4EC74300129CE5 /* ErrorMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328CF87D2A4EC74300129CE5 /* ErrorMessages.swift */; };
@@ -43,6 +43,10 @@
 		329B1F832A5565C40083C78A /* MapboxCoreNavigation in Frameworks */ = {isa = PBXBuildFile; productRef = 329B1F822A5565C40083C78A /* MapboxCoreNavigation */; };
 		329B1F852A5565C40083C78A /* MapboxNavigation in Frameworks */ = {isa = PBXBuildFile; productRef = 329B1F842A5565C40083C78A /* MapboxNavigation */; };
 		329B1F882A55663E0083C78A /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329B1F872A55663E0083C78A /* NavigationViewController.swift */; };
+		329B5F892A56D1A000559703 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329B5F882A56D1A000559703 /* ChatViewController.swift */; };
+		329B5F8C2A56D26800559703 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329B5F8B2A56D26800559703 /* Message.swift */; };
+		329B5F8F2A56D2C100559703 /* CustomMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329B5F8E2A56D2C100559703 /* CustomMessageCell.swift */; };
+		329B5F932A56ED4D00559703 /* Shipper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329B5F922A56ED4D00559703 /* Shipper.swift */; };
 		32BA81FB2A51600D007BC174 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 32BA81FA2A51600D007BC174 /* GoogleService-Info.plist */; };
 		32BA81FE2A51609F007BC174 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 32BA81FD2A51609F007BC174 /* FirebaseAnalytics */; };
 		32BA82002A51609F007BC174 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 32BA81FF2A51609F007BC174 /* FirebaseAuth */; };
@@ -78,6 +82,10 @@
 		32C1612C2A4FEC2500034807 /* DetailedOrderProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C1612B2A4FEC2500034807 /* DetailedOrderProtocols.swift */; };
 		32C41B952A567CC3006EFCF2 /* MyTrucksCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C41B942A567CC3006EFCF2 /* MyTrucksCollectionViewCell.swift */; };
 		32C41B972A567F39006EFCF2 /* VehicleStatCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C41B962A567F39006EFCF2 /* VehicleStatCustomView.swift */; };
+		32C41B992A5692F4006EFCF2 /* OrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C41B982A5692F4006EFCF2 /* OrderModel.swift */; };
+		32C41B9B2A569354006EFCF2 /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C41B9A2A569354006EFCF2 /* Vehicle.swift */; };
+		32C41B9D2A569413006EFCF2 /* SpaceNeeded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C41B9C2A569413006EFCF2 /* SpaceNeeded.swift */; };
+		32C41B9F2A569464006EFCF2 /* PackagingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C41B9E2A569464006EFCF2 /* PackagingType.swift */; };
 		32EBEB8C2A4E8BB20051E966 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 32EBEB802A4E8BB20051E966 /* Roboto-Medium.ttf */; };
 		32EBEB8D2A4E8BB20051E966 /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 32EBEB812A4E8BB20051E966 /* Roboto-BoldItalic.ttf */; };
 		32EBEB8E2A4E8BB20051E966 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 32EBEB822A4E8BB20051E966 /* Roboto-Bold.ttf */; };
@@ -92,6 +100,8 @@
 		32EBEB972A4E8BB20051E966 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 32EBEB8B2A4E8BB20051E966 /* Roboto-Black.ttf */; };
 		32EBEB9B2A4E8C6F0051E966 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EBEB9A2A4E8C6F0051E966 /* Fonts.swift */; };
 		32EBEB9D2A4E90170051E966 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EBEB9C2A4E90170051E966 /* Constants.swift */; };
+		32FA3B852A573A9500876521 /* PlaceOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FA3B842A573A9500876521 /* PlaceOrderViewController.swift */; };
+		32FA3B872A57403900876521 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FA3B862A57403900876521 /* MapViewController.swift */; };
 		54CD706BF877B1F27A2B4C1F /* Pods_CargoApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C34CBB8F8F2A6B3A52BB48EE /* Pods_CargoApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -114,7 +124,7 @@
 		328A9E3F2A4DB8E4007AE4DE /* SignUpModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModuleBuilder.swift; sourceTree = "<group>"; };
 		328A9E412A4DB8E9007AE4DE /* SignUpRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRouter.swift; sourceTree = "<group>"; };
 		328A9E432A4DB8EE007AE4DE /* SignUpProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpProtocols.swift; sourceTree = "<group>"; };
-		328CF8772A4EC42800129CE5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		328CF8772A4EC42800129CE5 /* Carrier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Carrier.swift; sourceTree = "<group>"; };
 		328CF8792A4EC47900129CE5 /* UserType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserType.swift; sourceTree = "<group>"; };
 		328CF87B2A4EC72500129CE5 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		328CF87D2A4EC74300129CE5 /* ErrorMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessages.swift; sourceTree = "<group>"; };
@@ -134,6 +144,10 @@
 		328CF89B2A4EDDF600129CE5 /* OrdersRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersRouter.swift; sourceTree = "<group>"; };
 		328CF89E2A4EDF2200129CE5 /* OrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
 		329B1F872A55663E0083C78A /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
+		329B5F882A56D1A000559703 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		329B5F8B2A56D26800559703 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		329B5F8E2A56D2C100559703 /* CustomMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMessageCell.swift; sourceTree = "<group>"; };
+		329B5F922A56ED4D00559703 /* Shipper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shipper.swift; sourceTree = "<group>"; };
 		32BA81FA2A51600D007BC174 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		32BA82122A517ABF007BC174 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		32BA82142A517AC4007BC174 /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
@@ -159,6 +173,10 @@
 		32C1612B2A4FEC2500034807 /* DetailedOrderProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedOrderProtocols.swift; sourceTree = "<group>"; };
 		32C41B942A567CC3006EFCF2 /* MyTrucksCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTrucksCollectionViewCell.swift; sourceTree = "<group>"; };
 		32C41B962A567F39006EFCF2 /* VehicleStatCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleStatCustomView.swift; sourceTree = "<group>"; };
+		32C41B982A5692F4006EFCF2 /* OrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderModel.swift; sourceTree = "<group>"; };
+		32C41B9A2A569354006EFCF2 /* Vehicle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
+		32C41B9C2A569413006EFCF2 /* SpaceNeeded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceNeeded.swift; sourceTree = "<group>"; };
+		32C41B9E2A569464006EFCF2 /* PackagingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackagingType.swift; sourceTree = "<group>"; };
 		32EBEB802A4E8BB20051E966 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		32EBEB812A4E8BB20051E966 /* Roboto-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BoldItalic.ttf"; sourceTree = "<group>"; };
 		32EBEB822A4E8BB20051E966 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
@@ -173,6 +191,8 @@
 		32EBEB8B2A4E8BB20051E966 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		32EBEB9A2A4E8C6F0051E966 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		32EBEB9C2A4E90170051E966 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		32FA3B842A573A9500876521 /* PlaceOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceOrderViewController.swift; sourceTree = "<group>"; };
+		32FA3B862A57403900876521 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		B1B3E370A64E98E02C473D3C /* Pods-CargoApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CargoApp.debug.xcconfig"; path = "Target Support Files/Pods-CargoApp/Pods-CargoApp.debug.xcconfig"; sourceTree = "<group>"; };
 		C34CBB8F8F2A6B3A52BB48EE /* Pods_CargoApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CargoApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -245,6 +265,8 @@
 		328A9E322A4DB678007AE4DE /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				32FA3B832A573A8900876521 /* Place New Order */,
+				329B5F872A56D19800559703 /* Chat */,
 				32C161202A4FEBEC00034807 /* Detailed Order */,
 				329B1F862A5566340083C78A /* Navigation */,
 				32BA82222A51A79D007BC174 /* Landing Page */,
@@ -289,6 +311,7 @@
 		328A9E382A4DB8C2007AE4DE /* Sign Up */ = {
 			isa = PBXGroup;
 			children = (
+				329B5F942A56F11500559703 /* Views */,
 				328A9E392A4DB8CC007AE4DE /* SignUpViewController.swift */,
 				328A9E3B2A4DB8D6007AE4DE /* SignUpPresenter.swift */,
 				328A9E3D2A4DB8DE007AE4DE /* SignUpInteractor.swift */,
@@ -340,6 +363,39 @@
 				329B1F872A55663E0083C78A /* NavigationViewController.swift */,
 			);
 			path = Navigation;
+			sourceTree = "<group>";
+		};
+		329B5F872A56D19800559703 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				329B5F8D2A56D2BD00559703 /* Views */,
+				329B5F8A2A56D26100559703 /* Models */,
+				329B5F882A56D1A000559703 /* ChatViewController.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		329B5F8A2A56D26100559703 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				329B5F8B2A56D26800559703 /* Message.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		329B5F8D2A56D2BD00559703 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				329B5F8E2A56D2C100559703 /* CustomMessageCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		329B5F942A56F11500559703 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		32BA82112A517AB0007BC174 /* Profile */ = {
@@ -431,7 +487,7 @@
 		32EBEB982A4E8C590051E966 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				328CF8772A4EC42800129CE5 /* User.swift */,
+				328CF8772A4EC42800129CE5 /* Carrier.swift */,
 				328CF8792A4EC47900129CE5 /* UserType.swift */,
 				328CF87B2A4EC72500129CE5 /* Errors.swift */,
 				328CF87D2A4EC74300129CE5 /* ErrorMessages.swift */,
@@ -439,6 +495,11 @@
 				32BA821E2A518F7E007BC174 /* UserModel.swift */,
 				32BA82202A5198E5007BC174 /* Orders.swift */,
 				321E68A92A52B1DC00478FCE /* NetworkLayer.swift */,
+				32C41B982A5692F4006EFCF2 /* OrderModel.swift */,
+				32C41B9A2A569354006EFCF2 /* Vehicle.swift */,
+				32C41B9C2A569413006EFCF2 /* SpaceNeeded.swift */,
+				32C41B9E2A569464006EFCF2 /* PackagingType.swift */,
+				329B5F922A56ED4D00559703 /* Shipper.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -451,6 +512,23 @@
 				321E68A72A52904D00478FCE /* Countries.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		32FA3B832A573A8900876521 /* Place New Order */ = {
+			isa = PBXGroup;
+			children = (
+				32FA3B882A5745F300876521 /* Views */,
+				32FA3B842A573A9500876521 /* PlaceOrderViewController.swift */,
+				32FA3B862A57403900876521 /* MapViewController.swift */,
+			);
+			path = "Place New Order";
+			sourceTree = "<group>";
+		};
+		32FA3B882A5745F300876521 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		943262ACBDA2081021A5567D /* Pods */ = {
@@ -610,12 +688,16 @@
 				328A9E442A4DB8EE007AE4DE /* SignUpProtocols.swift in Sources */,
 				32EBEB9D2A4E90170051E966 /* Constants.swift in Sources */,
 				32BA82272A51AD2C007BC174 /* UserTypeSelectionViewController.swift in Sources */,
+				32C41B9D2A569413006EFCF2 /* SpaceNeeded.swift in Sources */,
 				328CF87A2A4EC47900129CE5 /* UserType.swift in Sources */,
+				32FA3B852A573A9500876521 /* PlaceOrderViewController.swift in Sources */,
 				32BA82192A517AD0007BC174 /* ProfileModuleBuilder.swift in Sources */,
 				328CF8962A4EDDE300129CE5 /* OrdersInteractor.swift in Sources */,
+				329B5F932A56ED4D00559703 /* Shipper.swift in Sources */,
 				328A9E372A4DB6ED007AE4DE /* MainTabBarController.swift in Sources */,
 				328A9E3C2A4DB8D6007AE4DE /* SignUpPresenter.swift in Sources */,
 				325A4B402A4DB2A80047C1DA /* AppDelegate.swift in Sources */,
+				32C41B992A5692F4006EFCF2 /* OrderModel.swift in Sources */,
 				32C161282A4FEC1B00034807 /* DetailedOrderRouter.swift in Sources */,
 				32C41B972A567F39006EFCF2 /* VehicleStatCustomView.swift in Sources */,
 				32C161242A4FEC1100034807 /* DetailedOrderPresenter.swift in Sources */,
@@ -631,6 +713,7 @@
 				328CF88D2A4ECD4700129CE5 /* SignInProtocols.swift in Sources */,
 				32C1612C2A4FEC2500034807 /* DetailedOrderProtocols.swift in Sources */,
 				32BA82212A5198E5007BC174 /* Orders.swift in Sources */,
+				329B5F8F2A56D2C100559703 /* CustomMessageCell.swift in Sources */,
 				32BA82322A51BCEE007BC174 /* ConfirmEmailCell.swift in Sources */,
 				329B1F882A55663E0083C78A /* NavigationViewController.swift in Sources */,
 				328CF87E2A4EC74300129CE5 /* ErrorMessages.swift in Sources */,
@@ -649,13 +732,16 @@
 				321E68AA2A52B1DC00478FCE /* NetworkLayer.swift in Sources */,
 				328CF89F2A4EDF2200129CE5 /* OrderCell.swift in Sources */,
 				328CF8982A4EDDE900129CE5 /* OrdersModuleBuilder.swift in Sources */,
-				328CF8782A4EC42800129CE5 /* User.swift in Sources */,
+				328CF8782A4EC42800129CE5 /* Carrier.swift in Sources */,
+				329B5F8C2A56D26800559703 /* Message.swift in Sources */,
 				328CF8872A4ECD3700129CE5 /* SignInInteractor.swift in Sources */,
 				32BA82152A517AC4007BC174 /* ProfilePresenter.swift in Sources */,
 				32C1612A2A4FEC2100034807 /* DetailedOrderModuleBuilder.swift in Sources */,
 				32BA822C2A51BCDB007BC174 /* EnterPhoneCell.swift in Sources */,
+				32C41B9B2A569354006EFCF2 /* Vehicle.swift in Sources */,
 				32BA821F2A518F7E007BC174 /* UserModel.swift in Sources */,
 				328CF88B2A4ECD4100129CE5 /* SignInModuleBuilder.swift in Sources */,
+				329B5F892A56D1A000559703 /* ChatViewController.swift in Sources */,
 				321E68A82A52904D00478FCE /* Countries.swift in Sources */,
 				328A9E422A4DB8E9007AE4DE /* SignUpRouter.swift in Sources */,
 				32C41B952A567CC3006EFCF2 /* MyTrucksCollectionViewCell.swift in Sources */,
@@ -665,6 +751,8 @@
 				32C161262A4FEC1600034807 /* DetailedOrderInteractor.swift in Sources */,
 				328CF89C2A4EDDF600129CE5 /* OrdersRouter.swift in Sources */,
 				32BA82342A51BCFF007BC174 /* PersonDetailsCell.swift in Sources */,
+				32C41B9F2A569464006EFCF2 /* PackagingType.swift in Sources */,
+				32FA3B872A57403900876521 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

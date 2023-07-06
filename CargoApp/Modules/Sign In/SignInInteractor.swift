@@ -17,7 +17,7 @@ extension SignInInteractor: SignInInteractorProtocol {
     
     func userSignIn(email: String, password: String) {
         //here we check if the user exists, and if the username and password are correct
-        let errors = validateUserData(username: email, password: password)
+        let errors = validateUserData(email: email, password: password)
         
         
         if errors.count == 0 {
@@ -38,21 +38,17 @@ extension SignInInteractor: SignInInteractorProtocol {
     
 }
 
-func validateUserData(username: String, password: String) -> [ErrorModel] {
+func validateUserData(email: String, password: String) -> [ErrorModel] {
     var errors: [ErrorModel] = []
     
-    //Checking username
-    if username.isEmpty {
-        errors.append(ErrorModel(error: .username, errorMessage: .emptyFields))
-    } else if username == "wrong" {
-        errors.append(ErrorModel(error: .username, errorMessage: .wrongUsername))
+    //Checking email
+    if email.isEmpty {
+        errors.append(ErrorModel(error: .email, errorMessage: .emptyFields))
     }
     
     //Checking password
     if password.isEmpty {
         errors.append(ErrorModel(error: .password, errorMessage: .emptyFields))
-    } else if password == "wrong" {
-        errors.append(ErrorModel(error: .password, errorMessage: .wrongPassword))
     }
 
     return errors

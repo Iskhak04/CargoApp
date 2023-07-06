@@ -11,7 +11,7 @@ final class MyTrucksCollectionViewCell: UICollectionViewCell {
     
     lazy var bgView: UIView = {
         let view = UIView()
-        view.layer.cornerRadius = 10
+        
         return view
     }()
     
@@ -33,7 +33,6 @@ final class MyTrucksCollectionViewCell: UICollectionViewCell {
         let view = VehicleStatCustomView()
         view.vehicleStatWordLabel.text = "Name"
         view.vehicleStatLabel.text = "Riefer"
-        view.backgroundColor = .cyan
         return view
     }()
     
@@ -41,7 +40,6 @@ final class MyTrucksCollectionViewCell: UICollectionViewCell {
         let view = VehicleStatCustomView()
         view.vehicleStatWordLabel.text = "Type"
         view.vehicleStatLabel.text = "Truck"
-        view.backgroundColor = .cyan
         return view
     }()
     
@@ -49,7 +47,6 @@ final class MyTrucksCollectionViewCell: UICollectionViewCell {
         let view = VehicleStatCustomView()
         view.vehicleStatWordLabel.text = "Weight (lbs)"
         view.vehicleStatLabel.text = "10.000"
-        view.backgroundColor = .cyan
         return view
     }()
     
@@ -92,7 +89,6 @@ final class MyTrucksCollectionViewCell: UICollectionViewCell {
             make.right.equalToSuperview().offset(-20)
             make.bottom.equalToSuperview().offset(-5)
         }
-        bgView.backgroundColor = .yellow
         
         bgView.addSubview(vehicleNameLabel)
         vehicleNameLabel.snp.makeConstraints { make in

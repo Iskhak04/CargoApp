@@ -3,12 +3,14 @@ PODS:
   - Alamofire (5.7.1)
   - Hex (6.1.0)
   - SnapKit (5.6.0)
+  - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
   - AEOTPTextField
   - Alamofire
   - Hex
   - SnapKit
+  - SVProgressHUD
 
 SPEC REPOS:
   trunk:
@@ -16,13 +18,15 @@ SPEC REPOS:
     - Alamofire
     - Hex
     - SnapKit
+    - SVProgressHUD
 
 SPEC CHECKSUMS:
   AEOTPTextField: a275823fde05601c5da7f8fb66aaecb41289b370
   Alamofire: 0123a34370cb170936ae79a8df46cc62b2edeb88
   Hex: 2f67dd0cbb178cb24992e7529b025b8d16ff0bdc
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 0b984b3621f77e113e04407f6bfc2b277aa0db20
+PODFILE CHECKSUM: 08e57987f5cea11ea2f6e189e5bc376af7c5529b
 
 COCOAPODS: 1.11.3
