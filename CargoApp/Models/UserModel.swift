@@ -10,6 +10,5 @@ struct UserModel: Codable {
     let lastName: String
     let dotNumber: Int
     let isShipper: Bool
-    let ordersCount: Int
     let memberSince: String
 }

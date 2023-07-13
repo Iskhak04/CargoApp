@@ -45,6 +45,16 @@ final class MapViewController: UIViewController {
         return view
     }()
     
+    private lazy var cancelLocationButton: UIButton = {
+        let view = UIButton()
+        view.setTitle("Cancel", for: .normal)
+        view.backgroundColor = .label
+        view.setTitleColor(.systemBackground, for: .normal)
+        view.addTarget(self, action: #selector(cancelLocationButtonClicked), for: .touchUpInside)
+        view.layer.cornerRadius = 10
+        return view
+    }()
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = true
@@ -61,6 +71,10 @@ final class MapViewController: UIViewController {
         navigationItem.titleView = searchBar
         //navigationItem.titleView = searchBar
         layout()
+    }
+    
+    @objc private func cancelLocationButtonClicked() {
+        navigationController?.popViewController(animated: true)
     }
     
     @objc private func addLocationButtonClicked() {
@@ -87,6 +101,14 @@ final class MapViewController: UIViewController {
         addLocationButton.snp.makeConstraints { make in
             make.bottom.equalToSuperview().offset(-50)
             make.right.equalToSuperview().offset(-30)
+            make.height.equalTo(40)
+            make.width.equalTo(60)
+        }
+        
+        view.addSubview(cancelLocationButton)
+        cancelLocationButton.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().offset(-50)
+            make.left.equalToSuperview().offset(30)
             make.height.equalTo(40)
             make.width.equalTo(60)
         }
@@ -129,6 +151,10 @@ extension MapViewController: UISearchBarDelegate {
             self.locationsTableView.reloadData()
         }
         
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {

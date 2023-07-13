@@ -67,7 +67,6 @@ extension SignUpInteractor: SignUpInteractorProtocol {
                     databaseRef.child("lastName").setValue(shipper.lastName)
                     databaseRef.child("isShipper").setValue(true)
                     databaseRef.child("dotNumber").setValue(-1)
-                    databaseRef.child("ordersCount").setValue(0)
                     databaseRef.child("memberSince").setValue(registeredDate)
                 }
             }

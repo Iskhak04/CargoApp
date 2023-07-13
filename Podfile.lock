@@ -2,6 +2,9 @@ PODS:
   - AEOTPTextField (1.2.6)
   - Alamofire (5.7.1)
   - Hex (6.1.0)
+  - KDCalendar (1.8.9):
+    - KDCalendar/EventManager (= 1.8.9)
+  - KDCalendar/EventManager (1.8.9)
   - SnapKit (5.6.0)
   - SVProgressHUD (2.2.5)
 
@@ -9,6 +12,7 @@ DEPENDENCIES:
   - AEOTPTextField
   - Alamofire
   - Hex
+  - KDCalendar (~> 1.8.9)
   - SnapKit
   - SVProgressHUD
 
@@ -17,6 +21,7 @@ SPEC REPOS:
     - AEOTPTextField
     - Alamofire
     - Hex
+    - KDCalendar
     - SnapKit
     - SVProgressHUD
 
@@ -24,9 +29,10 @@ SPEC CHECKSUMS:
   AEOTPTextField: a275823fde05601c5da7f8fb66aaecb41289b370
   Alamofire: 0123a34370cb170936ae79a8df46cc62b2edeb88
   Hex: 2f67dd0cbb178cb24992e7529b025b8d16ff0bdc
+  KDCalendar: a587bc486b992d82ef94bd04001fce9baf45e518
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 08e57987f5cea11ea2f6e189e5bc376af7c5529b
+PODFILE CHECKSUM: f4df3b5b8b9fe7e8c8cdd27ea1f470c432ef20df
 
 COCOAPODS: 1.11.3

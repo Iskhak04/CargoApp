@@ -102,6 +102,7 @@
 		32EBEB9D2A4E90170051E966 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EBEB9C2A4E90170051E966 /* Constants.swift */; };
 		32FA3B852A573A9500876521 /* PlaceOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FA3B842A573A9500876521 /* PlaceOrderViewController.swift */; };
 		32FA3B872A57403900876521 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FA3B862A57403900876521 /* MapViewController.swift */; };
+		32FA3B8C2A5765D300876521 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FA3B8B2A5765D300876521 /* CalendarView.swift */; };
 		54CD706BF877B1F27A2B4C1F /* Pods_CargoApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C34CBB8F8F2A6B3A52BB48EE /* Pods_CargoApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -193,6 +194,7 @@
 		32EBEB9C2A4E90170051E966 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		32FA3B842A573A9500876521 /* PlaceOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceOrderViewController.swift; sourceTree = "<group>"; };
 		32FA3B862A57403900876521 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		32FA3B8B2A5765D300876521 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		B1B3E370A64E98E02C473D3C /* Pods-CargoApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CargoApp.debug.xcconfig"; path = "Target Support Files/Pods-CargoApp/Pods-CargoApp.debug.xcconfig"; sourceTree = "<group>"; };
 		C34CBB8F8F2A6B3A52BB48EE /* Pods_CargoApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CargoApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -527,6 +529,7 @@
 		32FA3B882A5745F300876521 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				32FA3B8B2A5765D300876521 /* CalendarView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -687,6 +690,7 @@
 			files = (
 				328A9E442A4DB8EE007AE4DE /* SignUpProtocols.swift in Sources */,
 				32EBEB9D2A4E90170051E966 /* Constants.swift in Sources */,
+				32FA3B8C2A5765D300876521 /* CalendarView.swift in Sources */,
 				32BA82272A51AD2C007BC174 /* UserTypeSelectionViewController.swift in Sources */,
 				32C41B9D2A569413006EFCF2 /* SpaceNeeded.swift in Sources */,
 				328CF87A2A4EC47900129CE5 /* UserType.swift in Sources */,

@@ -8,17 +8,22 @@
 import Foundation
 
 
-struct OrderModel {
-    let orderId: Int
+struct OrderModel: Codable {
+    let author: String
     let pickUpDate: String
-    let pickUpLocation: String
-    let dropOffLocation: String
-    let distance: Int
-    let vehicleType: Vehicle
-    let productWeight: Int
+    let pickUpLocationName: String
+    let dropOffLocationName: String
+    let dropOffLongitude: Double
+    let dropOffLatitude: Double
+    let pickUpLongitude: Double
+    let pickUpLatitude: Double
+    let distance: Double
+    let vehicleType: String
+    let weight: Int
     let ratePerMile: Double
-    let spaceNeeded: SpaceNeeded
-    let packagingType: PackagingType
-    let product: String
+    let spaceNeeded: String
+    let packagingType: String
+    let productType: String
     let price: Int
+    
 }

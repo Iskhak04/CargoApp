@@ -18,7 +18,8 @@ final class MainTabBarController: UITabBarController {
     }
     
     func addVCs() {
-        viewControllers = [UINavigationController(rootViewController: setupVCs(viewController: OrdersModuleBuilder.build(), image: UIImage(systemName: "list.clipboard")!, title: "Orders")) , setupVCs(viewController: ProfileModuleBuilder.build(), image: UIImage(systemName: "person.fill")!, title: "Profile"), setupVCs(viewController: ViewController(), image: UIImage(systemName: "bolt")!, title: "Navigation")]
+        viewControllers = [UINavigationController(rootViewController: setupVCs(viewController: OrdersModuleBuilder.build(), image: UIImage(systemName: "list.clipboard")!, title: "Orders")) , setupVCs(viewController: ProfileModuleBuilder.build(), image: UIImage(systemName: "person.fill")!, title: "Profile")]
+        //setupVCs(viewController: ViewController(), image: UIImage(systemName: "bolt")!, title: "Navigation")
     }
     
     func setupVCs(viewController: UIViewController, image: UIImage, title: String) -> UIViewController {

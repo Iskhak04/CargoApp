@@ -201,12 +201,27 @@ final class ProfileViewController: UIViewController {
         myTrucksCollectionView.reloadData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchUserData { realUser in
+            self.user = realUser
+            self.userCredentialsLabel.text = "\(self.user!.firstName) \(self.user!.lastName)"
+            self.memberSinceLabel.text = "\(self.user!.memberSince)"
+            self.dotLabel.text = "\(self.user!.dotNumber)"
+            if self.user!.isShipper {
+                self.dotView.isHidden = true
+                self.userTypeLabel.text = "Shipper"
+            } else {
+                self.userTypeLabel.text = "Carrier"
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchUserData { realUser in
             self.user = realUser
             self.userCredentialsLabel.text = "\(self.user!.firstName) \(self.user!.lastName)"
-            self.lifetimeLoadsLabel.text = "\(self.user!.ordersCount)"
             self.memberSinceLabel.text = "\(self.user!.memberSince)"
             self.dotLabel.text = "\(self.user!.dotNumber)"
             if self.user!.isShipper {
@@ -227,7 +242,7 @@ final class ProfileViewController: UIViewController {
         
         databaseRef.observe(.value) { snapshot in
             guard let jsonData = snapshot.value as? [String: Any] else { return }
-            
+            print(snapshot)
             do {
                 let userData = try JSONSerialization.data(withJSONObject: jsonData)
                 
@@ -352,47 +367,47 @@ final class ProfileViewController: UIViewController {
 //            make.top.equalTo(mcWordLabel.snp.bottom).offset(5)
 //            make.left.equalToSuperview()
 //        }
-        
-        view.addSubview(myVehiclesWordLabel)
-        myVehiclesWordLabel.snp.makeConstraints { make in
-            make.top.equalTo(dotView.snp.bottom).offset(40)
-            make.left.equalToSuperview().offset(20)
-        }
-        
-        view.addSubview(myVehiclesLabel)
-        myVehiclesLabel.snp.makeConstraints { make in
-            make.top.equalTo(dotView.snp.bottom).offset(40)
-            make.left.equalTo(myVehiclesWordLabel.snp.right).offset(10)
-        }
-        
-        view.addSubview(addVehicleButton)
-        addVehicleButton.snp.makeConstraints { make in
-            make.top.equalTo(dotView.snp.bottom).offset(37)
-            make.right.equalToSuperview().offset(-20)
-        }
-        
-        view.addSubview(deleteVehicleButton)
-        deleteVehicleButton.snp.makeConstraints { make in
-            make.top.equalTo(dotView.snp.bottom).offset(37)
-            make.right.equalTo(addVehicleButton.snp.left).offset(5)
-        }
-        
-        view.addSubview(editVehicleButton)
-        editVehicleButton.snp.makeConstraints { make in
-            make.top.equalTo(dotView.snp.bottom).offset(37)
-            make.right.equalTo(deleteVehicleButton.snp.left).offset(5)
-        }
-        
-        view.addSubview(myTrucksCollectionView)
-        myTrucksCollectionView.snp.makeConstraints { make in
-            make.top.equalTo(myVehiclesWordLabel.snp.bottom).offset(10)
-            make.left.right.equalToSuperview()
-            make.height.equalTo(220)
-        }
+//
+//        view.addSubview(myVehiclesWordLabel)
+//        myVehiclesWordLabel.snp.makeConstraints { make in
+//            make.top.equalTo(dotView.snp.bottom).offset(40)
+//            make.left.equalToSuperview().offset(20)
+//        }
+//
+//        view.addSubview(myVehiclesLabel)
+//        myVehiclesLabel.snp.makeConstraints { make in
+//            make.top.equalTo(dotView.snp.bottom).offset(40)
+//            make.left.equalTo(myVehiclesWordLabel.snp.right).offset(10)
+//        }
+//
+//        view.addSubview(addVehicleButton)
+//        addVehicleButton.snp.makeConstraints { make in
+//            make.top.equalTo(dotView.snp.bottom).offset(37)
+//            make.right.equalToSuperview().offset(-20)
+//        }
+//
+//        view.addSubview(deleteVehicleButton)
+//        deleteVehicleButton.snp.makeConstraints { make in
+//            make.top.equalTo(dotView.snp.bottom).offset(37)
+//            make.right.equalTo(addVehicleButton.snp.left).offset(5)
+//        }
+//
+//        view.addSubview(editVehicleButton)
+//        editVehicleButton.snp.makeConstraints { make in
+//            make.top.equalTo(dotView.snp.bottom).offset(37)
+//            make.right.equalTo(deleteVehicleButton.snp.left).offset(5)
+//        }
+//
+//        view.addSubview(myTrucksCollectionView)
+//        myTrucksCollectionView.snp.makeConstraints { make in
+//            make.top.equalTo(myVehiclesWordLabel.snp.bottom).offset(10)
+//            make.left.right.equalToSuperview()
+//            make.height.equalTo(220)
+//        }
         
         view.addSubview(signOutButton)
         signOutButton.snp.makeConstraints { make in
-            make.top.equalTo(myTrucksCollectionView.snp.bottom).offset(30)
+            make.top.equalTo(dotLabel.snp.bottom).offset(30)
             make.centerX.equalToSuperview()
             make.height.equalTo(50)
             make.width.equalTo(150)
@@ -401,6 +416,8 @@ final class ProfileViewController: UIViewController {
     
     @objc private func signOutButtonClicked() {
         try? Auth.auth().signOut()
+        navigationController?.dismiss(animated: true)
+        navigationController?.pushViewController(SignInModuleBuilder.build(), animated: true)
     }
     
     func fetchProfileData() {

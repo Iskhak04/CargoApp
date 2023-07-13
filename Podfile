@@ -11,5 +11,6 @@ target 'CargoApp' do
 	pod 'Hex'
 	pod 'AEOTPTextField'
 	pod 'SVProgressHUD'
+	pod 'KDCalendar', '~> 1.8.9'
 
 end

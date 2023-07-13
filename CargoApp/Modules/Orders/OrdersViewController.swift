@@ -6,12 +6,16 @@
 //
 
 import UIKit
+import FirebaseDatabase
+import FirebaseAuth
 
 final class OrdersViewController: UIViewController {
     
     var presenter: OrdersPresenterProtocol?
     
-    var orders: [OrderModel] = [OrderModel(orderId: 1, pickUpDate: "8 Jul", pickUpLocation: "Austin", dropOffLocation: "Los-Angeles", distance: 945, vehicleType: .Reefer, productWeight: 20000, ratePerMile: 2.1, spaceNeeded: .FullTruck, packagingType: .Box, product: "Dishes", price: 1490), OrderModel(orderId: 2, pickUpDate: "12 Aug", pickUpLocation: "Miami", dropOffLocation: "Dallas", distance: 1295, vehicleType: .Flatbed, productWeight: 40000, ratePerMile: 2.8, spaceNeeded: .FullTruck, packagingType: .Pallet, product: "Dry Food", price: 1800), OrderModel(orderId: 3, pickUpDate: "7 Jul", pickUpLocation: "Houston", dropOffLocation: "New-York", distance: 1958, vehicleType: .Reefer, productWeight: 40000, ratePerMile: 2.9, spaceNeeded: .FullTruck, packagingType: .Box, product: "Fruits", price: 1948), OrderModel(orderId: 4, pickUpDate: "29 Jul", pickUpLocation: "Phoenix", dropOffLocation: "Portland", distance: 858, vehicleType: .Flatbed, productWeight: 10000, ratePerMile: 2.5, spaceNeeded: .Partial, packagingType: .Box, product: "Souvenirs", price: 1300)]
+    var orders: [[String: Any]] = []
+    
+//    var orders: [OrderModel] = [OrderModel(orderId: 1, pickUpDate: "8 Jul", pickUpLocation: "Austin", dropOffLocation: "Los-Angeles", distance: 945, vehicleType: .Reefer, productWeight: 20000, ratePerMile: 2.1, spaceNeeded: .FullTruck, packagingType: .Box, product: "Dishes", price: 1490), OrderModel(orderId: 2, pickUpDate: "12 Aug", pickUpLocation: "Miami", dropOffLocation: "Dallas", distance: 1295, vehicleType: .Flatbed, productWeight: 40000, ratePerMile: 2.8, spaceNeeded: .FullTruck, packagingType: .Pallet, product: "Dry Food", price: 1800), OrderModel(orderId: 3, pickUpDate: "7 Jul", pickUpLocation: "Houston", dropOffLocation: "New-York", distance: 1958, vehicleType: .Reefer, productWeight: 40000, ratePerMile: 2.9, spaceNeeded: .FullTruck, packagingType: .Box, product: "Fruits", price: 1948), OrderModel(orderId: 4, pickUpDate: "29 Jul", pickUpLocation: "Phoenix", dropOffLocation: "Portland", distance: 858, vehicleType: .Flatbed, productWeight: 10000, ratePerMile: 2.5, spaceNeeded: .Partial, packagingType: .Box, product: "Souvenirs", price: 1300)]
     
     var filteredOrders: [OrderModel] = []
     
@@ -47,12 +51,18 @@ final class OrdersViewController: UIViewController {
         navigationItem.title = "Orders"
         navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.prefersLargeTitles = true
+        fetchProfileData()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchOrders { model in
+            print("suce")
+        }
+        
         presenter?.fetchOrders()
-        filteredOrders = orders
+        
+        //filteredOrders = orders
         searchBar.searchBarStyle = UISearchBar.Style.default
         searchBar.placeholder = "Search by ID"
         searchBar.sizeToFit()
@@ -93,15 +103,60 @@ final class OrdersViewController: UIViewController {
             make.height.width.equalTo(50)
         }
     }
+    
+    func fetchProfileData() {
+        
+        let user = Auth.auth().currentUser
+        guard let userUid = user?.uid else { return }
+        
+        let databaseRef = Database.database().reference(withPath: "users/\(userUid)")
+        
+        databaseRef.observeSingleEvent(of: .value) { snapshot in
+            do {
+                let object = try snapshot.data(as: UserModel.self)
+                print(object.isShipper)
+                if !object.isShipper {
+                    self.placeOrderButton.isHidden = true
+                } else {
+                    self.placeOrderButton.isHidden = false
+                }
+            } catch {
+                
+            }
+            
+        }
+    }
+    
+    private func fetchOrders(completion: @escaping (OrderModel) -> Void) {
+        
+        let ref = Database.database().reference(withPath: "orders")
+        
+        ref.observe(.value) { snapshot in
+            if let value = snapshot.value as? [String: Any] {
+                // Convert the retrieved data to your desired format
+                // For example, if each item in the list is a dictionary
+                let itemList = value.map { $0.value as! [String: Any] }
+                self.orders = itemList
+                self.ordersCollectionView.reloadData()
+                print(self.orders)
+                // Use the itemList as needed
+            }
+        }
+       
+        
+        
+        
+        
+    }
 }
 
 extension OrdersViewController: UISearchBarDelegate {
     // This method updates filteredData based on the text in the Search Box
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
-        filteredOrders = searchText.isEmpty ? orders : orders.filter({ order in
-            return String(order.orderId).range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
-        })
+//        filteredOrders = searchText.isEmpty ? orders : orders.filter({ order in
+//            return String().range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+//        })
         
         ordersCollectionView.reloadData()
     }
@@ -113,7 +168,7 @@ extension OrdersViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = false
         searchBar.text = ""
-        filteredOrders = orders
+        //filteredOrders = orders
         ordersCollectionView.reloadData()
         searchBar.resignFirstResponder()
     }
@@ -122,7 +177,7 @@ extension OrdersViewController: UISearchBarDelegate {
 extension OrdersViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return filteredOrders.count
+        return orders.count
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -142,14 +197,31 @@ extension OrdersViewController: UICollectionViewDataSource, UICollectionViewDele
         cell.layer.cornerRadius = 10
         cell.layer.rasterizationScale = UIScreen.main.scale
         
-        cell.pickUpDateLabel.text = "Pick Up - \(filteredOrders[indexPath.row].pickUpDate)"
-        cell.pickUpAddressLabel.text = filteredOrders[indexPath.row].pickUpLocation
-        cell.dropOffAddressLabel.text = filteredOrders[indexPath.row].dropOffLocation
-        cell.distanceLabel.text = "\(filteredOrders[indexPath.row].distance) mi"
-        cell.vehicleTypeLabel.text = filteredOrders[indexPath.row].vehicleType.rawValue
-        cell.loadWeightLabel.text = "\(filteredOrders[indexPath.row].productWeight) lbs"
-        cell.priceLabel.text = "$\(filteredOrders[indexPath.row].price)"
-        cell.orderIdLabel.text = "#\(filteredOrders[indexPath.row].orderId)"
+        
+        if orders.count != 0 {
+            
+            let mile = orders[indexPath.row]["distance"]! as? Double
+            let mileString = String(format: "%.2f", mile!)
+            
+            cell.pickUpDateLabel.text = "Pick Up - \(orders[indexPath.row]["pickUpDate"]!)"
+            cell.pickUpAddressLabel.text = "\(orders[indexPath.row]["pickUpLocationName"]!)"
+            cell.dropOffAddressLabel.text = "\(orders[indexPath.row]["dropOffLocationName"]!)"
+            cell.distanceLabel.text = "\(mileString) mi"
+            cell.vehicleTypeLabel.text = "\(orders[indexPath.row]["vehicleType"]!)"
+            cell.loadWeightLabel.text = "\(orders[indexPath.row]["weight"]!) lbs"
+            
+            cell.priceLabel.text = "$\(orders[indexPath.row]["price"]!)"
+            cell.shipperLabel.text = "\(orders[indexPath.row]["author"]!)"
+            
+        }
+        
+//        cell.pickUpAddressLabel.text = filteredOrders[indexPath.row].pickUpLocationName
+//        cell.dropOffAddressLabel.text = filteredOrders[indexPath.row].dropOffLocationName
+//        cell.distanceLabel.text = "\(filteredOrders[indexPath.row].distance) mi"
+//        cell.vehicleTypeLabel.text = filteredOrders[indexPath.row].vehicleType
+//        cell.loadWeightLabel.text = "\(filteredOrders[indexPath.row].weight) lbs"
+//        cell.priceLabel.text = "$\(filteredOrders[indexPath.row].price)"
+//        cell.orderIdLabel.text = "#\(indexPath.row + 1)"
         return cell
     }
     
@@ -162,7 +234,7 @@ extension OrdersViewController: UICollectionViewDataSource, UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        presenter?.goToDetailedOrder(order: filteredOrders[indexPath.row])
+        presenter?.goToDetailedOrder(order: orders[indexPath.row])
     }
 
 }

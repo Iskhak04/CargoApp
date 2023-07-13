@@ -15,7 +15,7 @@ final class OrdersRouter {
 
 extension OrdersRouter: OrdersRouterProtocol {
 
-    func goToDetailedOrder(order: OrderModel) {
+    func goToDetailedOrder(order: [String:Any]) {
         //go to detailed order page
 
         viewController?.navigationController?.dismiss(animated: true)

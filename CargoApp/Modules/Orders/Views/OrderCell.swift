@@ -195,12 +195,12 @@ final class OrderCell: UICollectionViewCell {
             make.top.equalToSuperview().offset(15)
             make.centerX.equalToSuperview()
         }
-        
-        addSubview(orderIdLabel)
-        orderIdLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(15)
-            make.right.equalToSuperview().offset(-15)
-        }
+//
+//        addSubview(orderIdLabel)
+//        orderIdLabel.snp.makeConstraints { make in
+//            make.top.equalToSuperview().offset(15)
+//            make.right.equalToSuperview().offset(-15)
+//        }
         
 //        ageView.addSubview(priceLabel)
 //        priceLabel.snp.makeConstraints { make in
